@@ -54,22 +54,26 @@ app.use(function (req, res, next) {
  * BEGIN ERR HANDLING
  ***/
 
-function errorHandler (err, req, res, next) {
-  //Default Error Handling
 
-  if (res.headersSent) {
-    return next(err)
-  }
 
-  res.status(500)
-  res.render('error', { error: err, other: "hi there" }) //TODO:  Make this generic
 
-}
 
 /***
  * BEGIN ERR HANDLING
  ***/
 
+ app.get("/", (req, res) => {
+   res.end("got to root");
+ })
+
+ app.all('*', function(req, res, next){
+  console.log("nope");
+  next(404);
+ });
+
+const errors = require("./controllers/ErrorController");
+app.use(errors.logErrors);
+app.use(errors.errorHandler);
 
 app.listen(PORT, function () {
   console.log("Server listening on: http://localhost:" + PORT);
