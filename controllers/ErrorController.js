@@ -1,33 +1,58 @@
+const express = require("express");
+const router = express.Router();
+
+exports.erorNotFound = function (req, res, next) {
+  const error = {
+    number: 404,
+    message: "Not Found."
+  };
+  res.render('error', error);
+}
+
 exports.logErrors = function (err, req, res, next) {
-  console.log("I am here:  logErrors");
-  console.error(err.stack)
+  //TODO:  Add some logging
+  console.error(Date.now().toString() + " - ", err);
   next(err)
 }
 
 exports.errorHandler = function (err, req, res, next) {
-  //Default Error Handling
-  console.log("I am here:  errorHandler");
+  const error = {
+    number: err.number || 500
+  };
 
+  switch (error.number) {
+    case 500:
+      error.message = "Internal Server Error";
+      break;
 
-  console.log("headers send?", res.headersSent);
+    default:
+      if(err.message){
+        error.message = err.message
+      } else {
+        error.message = ""
+      }
+      break;
+  }
 
+  //set the status
   if (!res.headersSent) {
-    res.status(500)
+    res.status(error.number);
   }
 
-  console.log("Accepts html?", req.accepts('html'));
-  console.log("Accepts json?", req.accepts('json'));
+  //Check to see if the request can handle an HTML response.
 
-  //Render the error page
+  //If it can then we will render an error page.
   if (req.accepts('html')) {
-    res.render('error', { error: "Something bad happened" });
-    return;
+    return res.render('error', error);
   }
 
-  //Send a payload w/ an error message
+  //If it can't then we will check if it can handle JSON
   if (req.accepts('json')) {
-    res.send({ error: "Something bad happened" });
-    return;
+    res.send(error);
   }
+
+  //If it can't accept those - we'll just send text.
+  res.send( error.message );
 
 }
+

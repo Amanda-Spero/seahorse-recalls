@@ -53,6 +53,9 @@ app.use(function (req, res, next) {
 /***
  * BEGIN ERR HANDLING
  ***/
+app.get("/", (req, res, next) => {
+  res.render('index');
+});
 
 
 
@@ -61,19 +64,8 @@ app.use(function (req, res, next) {
 /***
  * BEGIN ERR HANDLING
  ***/
-
- app.get("/", (req, res) => {
-   res.end("got to root");
- })
-
- app.all('*', function(req, res, next){
-  console.log("nope");
-  next(404);
- });
-
-const errors = require("./controllers/ErrorController");
-app.use(errors.logErrors);
-app.use(errors.errorHandler);
+const {erorNotFound, logErrors, errorHandler} = require("./controllers/ErrorController");
+app.use(erorNotFound, logErrors, errorHandler);
 
 app.listen(PORT, function () {
   console.log("Server listening on: http://localhost:" + PORT);
