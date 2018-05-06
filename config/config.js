@@ -1,18 +1,45 @@
-const jwtSecret =
-  process.env.tokenSecret || "f#b$ljOK!!DteUHt09%%mfE0v!%&FSXVOoFKyKTM9l";
+const fs = require('fs');
 
-//TODO:  modify this to use environment variables
-const sql = {
-  database: "project2db",
-  host: "localhost",
-  username: "root",
-  password: "password"
+function getPrivate() {
+  if (process.env.privateKey) {
+    return process.env.privateKey;
+  }
+
+  return fs.readFileSync('./config/devkey').toString();
+}
+
+function getPublic() {
+  if (process.env.privateKey) {
+    return process.env.privateKey;
+  }
+
+  return fs.readFileSync('./config/devkey.pub').toString();
+}
+
+// token Options
+const tknOpt = {
+  keys: {
+    private: getPrivate(),
+    public: getPublic(),
+  },
+  expireTime: 1800,
 };
 
-const saltRounds = 8;
+const hashOpt = {
+  saltRounds: 8,
+};
+
+// TODO:  modify this to use environment variables
+const sql = {
+  database: 'project2db',
+  host: 'localhost',
+  username: 'root',
+  password: 'password',
+};
+
 
 module.exports = {
-  jwtSecret,
   sql,
-  saltRounds
+  tknOpt,
+  hashOpt,
 };
