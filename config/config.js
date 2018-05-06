@@ -1,6 +1,5 @@
 const jwtSecret =
-  process.env.jwtSecret || "f#b$ljOK!!DteUHt09%%mfE0v!%&FSXVOoFKyKTM9l";
-
+  process.env.tokenSecret || "f#b$ljOK!!DteUHt09%%mfE0v!%&FSXVOoFKyKTM9l";
 
 //TODO:  modify this to use environment variables
 const sql = {
@@ -10,7 +9,10 @@ const sql = {
   password: "password"
 };
 
+const saltRounds = 8;
+
 module.exports = {
   jwtSecret,
-  sql
+  sql,
+  saltRounds
 };

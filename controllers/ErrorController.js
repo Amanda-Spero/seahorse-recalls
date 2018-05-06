@@ -6,12 +6,21 @@ exports.erorNotFound = function (req, res, next) {
     number: 404,
     message: "Not Found."
   };
-  res.render('error', error);
+
+  res.status(404).render('error', error);
 }
 
 exports.logErrors = function (err, req, res, next) {
-  //TODO:  Add some logging
-  console.error(Date.now().toString() + " - ", err);
+  const errString = `\n` + "*".repeat(20) + `\n` +
+    `DATE: ${Date.now()}\n` +
+    `URL: ${req.url}\n` +
+    `ERROR: ${(typeof (err) === "object")
+      ? JSON.stringify(err, null, 2)
+      : err}\n` +
+    "*".repeat(20);
+
+
+  console.log(errString);
   next(err)
 }
 
@@ -26,7 +35,7 @@ exports.errorHandler = function (err, req, res, next) {
       break;
 
     default:
-      if(err.message){
+      if (err.message) {
         error.message = err.message
       } else {
         error.message = ""
@@ -39,20 +48,13 @@ exports.errorHandler = function (err, req, res, next) {
     res.status(error.number);
   }
 
-  //Check to see if the request can handle an HTML response.
 
-  //If it can then we will render an error page.
-  if (req.accepts('html')) {
+  //If the request came in on a non-api route then send an error page.
+  if (req.accepts('html') && !req.url.startsWith("/api/")) {
     return res.render('error', error);
   }
 
-  //If it can't then we will check if it can handle JSON
-  if (req.accepts('json')) {
-    res.send(error);
-  }
-
-  //If it can't accept those - we'll just send text.
-  res.send( error.message );
-
+  //otherwise just send error json.
+  return res.send(error);
 }
 

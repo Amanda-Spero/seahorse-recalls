@@ -42,7 +42,8 @@ app.use(function (req, res, next) {
 /***
  * BEGIN ROUTES
  ***/
-
+const AuthController = require("./controllers/AuthController");
+app.use("/api", AuthController);
 
 
 /***
