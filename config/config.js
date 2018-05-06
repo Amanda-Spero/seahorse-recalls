@@ -13,7 +13,7 @@ function getPublic() {
     return process.env.privateKey;
   }
 
-  return fs.readFileSync('./config/devkey.pub').toString();
+  return fs.readFileSync('./config/devkey.pem').toString();
 }
 
 // token Options

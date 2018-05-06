@@ -56,7 +56,7 @@ function register(req, res, next) {
         .then((hash) => {
           User.create({ email: req.body.email, password: hash })
             .then((result) => {
-              const token = getToken(result.id);
+              const token = getToken(result.globalUserId);
               return res.status(200).json({ auth: true, token });
             })
             .catch((err) => {
@@ -78,7 +78,42 @@ function register(req, res, next) {
   return undefined;
 }
 
+function checkAuth(req, res, next) {
+  const error = {
+    number: 401,
+    message: 'Not Authorized',
+  };
+
+  const hasAuth = (req.headers && req.headers.authorization);
+  if (!hasAuth) {
+    return next(error);
+  }
+
+  const [authType, token] = req.headers.authorization.split(' ');
+
+  if (authType !== 'Bearer') {
+    return next(error);
+  }
+
+  try {
+    const decode = jwt.verify(token, tknOpt.keys.public, { algorithms: 'RS512' });
+    req.userInfo = decode;
+  } catch (err) {
+    if (err.name && err.name === 'TokenExpiredError') {
+      return next(error);
+    }
+    next({
+      number: 500,
+      message: 'Internal Server Error',
+    });
+  }
+
+  return next();
+}
 
 router.post('/register', register);
 
-module.exports = router;
+module.exports = {
+  register: router,
+  checkAuth,
+};
