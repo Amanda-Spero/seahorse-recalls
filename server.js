@@ -21,15 +21,15 @@ const { checkAuth, register } = require('./controllers/AuthController');
 
 app.use('/api/auth', register);
 
-
 app.get('/', checkAuth, (req, res) => {
   res.render('index');
 });
 
-
 const { erorNotFound, logErrors, errorHandler } = require('./controllers/ErrorController');
 
-app.use(erorNotFound, logErrors, errorHandler);
+app.use(logErrors);
+app.use(errorHandler);
+app.use(erorNotFound);
 
 app.listen(PORT, () => {
   return console.log(`Server listening on: http://localhost: ${PORT}`);

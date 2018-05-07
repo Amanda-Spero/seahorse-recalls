@@ -1,4 +1,5 @@
 const express = require('express');
+const createError = require('http-errors');
 
 const router = express.Router();
 
@@ -22,34 +23,29 @@ function getToken(userId) {
   return jwt.sign(payload, tknOpt.keys.private, options);
 }
 
-function register(req, res, next) {
-  if (!req.body.email) {
-    const error = {
-      number: 400,
-      message: 'Email Required',
-    };
-
-    return next(error);
+function userFieldsValid(body) {
+  if (!body.email) {
+    return createError(400, 'Email is required');
   }
 
-  if (!req.body.password) {
-    const error = {
-      number: 400,
-      message: 'Password Required',
-    };
+  if (!body.password) {
+    return createError(400, 'Password is required');
+  }
 
-    return next(error);
+  return undefined;
+}
+
+function register(req, res, next) {
+  const validationError = userFieldsValid(req.body);
+  if (validationError) {
+    next(validationError);
   }
 
   // Check if user exists.  Create it if it does not.
   User.findOne({ where: { email: req.body.email.toString() } })
     .then((user) => {
       if (user) {
-        const error = {
-          number: 400,
-          message: 'Username already exists.',
-        };
-        return next(error);
+        return next(createError(409, 'User already exists.'));
       }
 
       bcrypt.hash(req.body.password, hashOpt.saltRounds)
@@ -80,20 +76,15 @@ function register(req, res, next) {
 }
 
 function checkAuth(req, res, next) {
-  const error = {
-    number: 401,
-    message: 'Not Authorized',
-  };
-
   const hasAuth = (req.headers && req.headers.authorization);
   if (!hasAuth) {
-    return next(error);
+    return next(createError(401));
   }
 
   const [authType, token] = req.headers.authorization.split(' ');
 
   if (authType !== 'Bearer') {
-    return next(error);
+    return next(createError(401));
   }
 
   try {
@@ -101,18 +92,53 @@ function checkAuth(req, res, next) {
     req.userInfo = decode;
   } catch (err) {
     if (err.name && err.name === 'TokenExpiredError') {
-      return next(error);
+      return next(createError(401));
     }
-    next({
-      number: 500,
-      message: 'Internal Server Error',
-    });
+    return next(createError(500));
   }
 
   return next();
 }
 
+function getAuth(req, res, next) {
+  const validationError = userFieldsValid(req.body);
+  if (validationError) {
+    return next(validationError);
+  }
+
+  const reqEmail = req.body.email;
+  const reqPassword = req.body.password;
+
+  const search = {
+    where: {
+      email: reqEmail.toString(),
+    },
+  };
+
+  User.findOne(search)
+    .then((user) => {
+      const { globalUserId, password } = user.dataValues;
+
+      bcrypt.compare(reqPassword, password)
+        .then((matched) => {
+          if (!matched) {
+            return next({ number: 401, message: 'Not Authorized' });
+          }
+
+          const token = getToken(globalUserId);
+          return res.status(200).json({ auth: true, token });
+        })
+        .catch(() => {
+          next({ number: 500, message: 'Internal System Error' });
+        });
+    })
+    .catch(() => {
+      return next({ error: 500, message: 'Internal Server Error' });
+    });
+}
+
 router.post('/register', register);
+router.post('/login', getAuth);
 
 module.exports = {
   register: router,
