@@ -57,6 +57,7 @@ function register(req, res, next) {
           User.create({ email: req.body.email, password: hash })
             .then((result) => {
               const token = getToken(result.globalUserId);
+
               return res.status(200).json({ auth: true, token });
             })
             .catch((err) => {
