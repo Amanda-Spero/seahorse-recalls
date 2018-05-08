@@ -17,11 +17,12 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 // Authorization
+// TODO: return here and add the 'checkAuth' to restricted routes
 const { checkAuth, register } = require('./controllers/AuthController');
 
 app.use('/api/auth', register);
 
-app.get('/', checkAuth, (req, res) => {
+app.get('/', (req, res) => {
   res.render('index');
 });
 
