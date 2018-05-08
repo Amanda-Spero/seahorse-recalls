@@ -24,6 +24,7 @@ function getToken(userId) {
 }
 
 function userFieldsValid(body) {
+  console.log(body);
   if (!body.email) {
     return createError(400, 'Email is required');
   }
@@ -35,10 +36,28 @@ function userFieldsValid(body) {
   return undefined;
 }
 
+function nameFieldsValid(body) {
+  if (!body.firstName) {
+    return createError(400, 'firstName is required');
+  }
+
+  if (!body.lastName) {
+    return createError(400, 'lastName is required');
+  }
+
+  return undefined;
+}
+
 function register(req, res, next) {
+  console.log(req.body);
   const validationError = userFieldsValid(req.body);
   if (validationError) {
     next(validationError);
+  }
+
+  const nameValidationError = nameFieldsValid(req.body);
+  if (nameValidationError) {
+    next(nameValidationError);
   }
 
   // Check if user exists.  Create it if it does not.
@@ -47,10 +66,14 @@ function register(req, res, next) {
       if (user) {
         return next(createError(409, 'User already exists.'));
       }
-
       bcrypt.hash(req.body.password, hashOpt.saltRounds)
         .then((hash) => {
-          User.create({ email: req.body.email, password: hash })
+          User.create({
+            email: req.body.email,
+            password: hash,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+          })
             .then((result) => {
               const token = getToken(result.globalUserId);
 

@@ -8,6 +8,14 @@ const user = {
     primaryKey: true,
     allowNull: false,
   },
+  firstName: {
+    type: sequelize.STRING,
+    allowNull: false,
+  },
+  lastName: {
+    type: sequelize.STRING,
+    allowNull: false,
+  },
   password: {
     type: sequelize.STRING,
     allowNull: false,
