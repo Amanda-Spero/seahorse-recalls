@@ -29,7 +29,7 @@ const hashOpt = {
   saltRounds: 8,
 };
 
-// TODO:  modify this to use environment variables
+// Use environment vars first - then use dev vars
 const sql = {
   database: process.env.database || 'project2db',
   host: process.env.host || 'localhost',

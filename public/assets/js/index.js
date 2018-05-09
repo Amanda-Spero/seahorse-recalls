@@ -1,19 +1,31 @@
-const registerForm = document.getElementById('registerForm');
-const registerButton = document.getElementById('registerBtn');
+async function seahorsePost(uri, payload, secure) {
+  const headers = {};
+  headers['content-type'] = 'application/json';
+  if (secure) {
+    headers.Authorization = `Bearer ${'token'}`;
+  }
 
-async function register(newUser) {
-  const url = '/api/auth/register';
-
-  return fetch(url, {
-    body: JSON.stringify(newUser), // must match 'Content-Type' header
-    headers: {
-      'content-type': 'application/json',
-    },
+  const ajaxParm = {
+    body: JSON.stringify(payload),
+    headers,
     method: 'POST',
     redirect: 'follow',
-    referrer: 'no-referrer',
-  }).then(response => response.json());
+    credentials: 'include',
+  };
+
+  return fetch(uri, ajaxParm).then(resp => resp.json());
 }
+
+async function register(newUser) {
+  return seahorsePost('/api/auth/register', newUser, false);
+}
+
+async function login(user) {
+  return seahorsePost('/api/auth/login', user, false);
+}
+
+const registerForm = document.getElementById('registerForm');
+const registerButton = document.getElementById('registerBtn');
 
 registerButton.addEventListener('click', (event) => {
   event.preventDefault();
@@ -30,11 +42,45 @@ registerButton.addEventListener('click', (event) => {
 
   register(newUser).then((auth) => {
     if (auth && auth.auth) {
-      const cookie = `projectAuth=${auth.token};max-age=1800`;
-      document.cookie = cookie;
       registerForm.reset();
-
-      alert('rester complete: cookie created');
+      return;
     }
+
+    if (auth.number && auth.number === 409) {
+      return alert('User Already Exists');
+    }
+
+    return alert('Unknwon Error');
+
+  }).catch((err) => {
+    return alert('Unknown Error');
+  });
+});
+
+const loginForm = document.getElementById('loginForm');
+const loginButton = document.getElementById('loginBtn');
+
+loginButton.addEventListener('click', (event) => {
+  event.preventDefault();
+  if (!loginForm.checkValidity()) {
+    return loginForm.reportValidity();
+  }
+
+  const user = {
+    email: loginForm.email.value,
+    password: loginForm.password.value,
+  };
+
+  login(user).then((auth) => {
+    if (auth && auth.auth) {
+      const cookie = `projectAuth=${auth.token};max-age=1800`;
+      // document.cookie = cookie;
+      loginForm.reset();
+
+      return alert('login complete: cookie created');
+    }
+    return alert('not authorized');
+  }).catch((error) => {
+    return alert('unknown error');
   });
 });

@@ -1,5 +1,6 @@
 const express = require('express');
 const createError = require('http-errors');
+const cookieParser = require('cookie-parser');
 
 const router = express.Router();
 
@@ -24,7 +25,6 @@ function getToken(userId) {
 }
 
 function userFieldsValid(body) {
-  console.log(body);
   if (!body.email) {
     return createError(400, 'Email is required');
   }
@@ -49,7 +49,6 @@ function nameFieldsValid(body) {
 }
 
 function register(req, res, next) {
-  console.log(req.body);
   const validationError = userFieldsValid(req.body);
   if (validationError) {
     next(validationError);
@@ -76,8 +75,9 @@ function register(req, res, next) {
           })
             .then((result) => {
               const token = getToken(result.globalUserId);
-
-              return res.status(200).json({ auth: true, token });
+              return res.cookie('seahorse', token, {
+                maxAge: 600000,
+              }).status(200).json({ auth: true, token });
             })
             .catch((err) => {
               let number = 500;
@@ -149,7 +149,7 @@ function getAuth(req, res, next) {
           }
 
           const token = getToken(globalUserId);
-          return res.status(200).json({ auth: true, token });
+          return res.cookie('seahorse', token).status(200).json({ auth: true, token });
         })
         .catch(() => {
           next({ number: 500, message: 'Internal System Error' });
