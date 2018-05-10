@@ -28,6 +28,10 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
+app.get('/test', checkAuth, (req, res) => {
+  res.render('index', { name: req.userInfo.name });
+});
+
 const { erorNotFound, logErrors, errorHandler } = require('./controllers/ErrorController');
 
 app.use(logErrors);

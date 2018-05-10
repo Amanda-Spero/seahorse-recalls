@@ -84,3 +84,13 @@ loginButton.addEventListener('click', (event) => {
     return alert('unknown error');
   });
 });
+
+
+function removeCookie(name) {
+  document.cookie = `${name} =; expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
+}
+
+const logoutBtn = document.getElementById('logoutBtn');
+logoutBtn.addEventListener('click', () => {
+  removeCookie('seahorse');
+});

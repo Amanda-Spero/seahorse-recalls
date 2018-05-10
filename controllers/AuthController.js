@@ -11,9 +11,15 @@ const bcrypt = require('bcryptjs');
 
 const { tknOpt, hashOpt } = require('../config/config');
 
-function getToken(userId) {
+const cookieOptions = {
+  maxAge: 600000,
+};
+
+
+function getToken(userId, firstName) {
   const payload = {
     id: userId,
+    name: firstName,
   };
 
   const options = {
@@ -74,10 +80,11 @@ function register(req, res, next) {
             lastName: req.body.lastName,
           })
             .then((result) => {
-              const token = getToken(result.globalUserId);
-              return res.cookie('seahorse', token, {
-                maxAge: 600000,
-              }).status(200).json({ auth: true, token });
+              const token = getToken(result.globalUserId, result.firstName);
+
+              return res.cookie('seahorse', token, cookieOptions)
+                .status(200)
+                .json({ auth: true, token });
             })
             .catch((err) => {
               let number = 500;
@@ -99,15 +106,22 @@ function register(req, res, next) {
 }
 
 function checkAuth(req, res, next) {
-  const hasAuth = (req.headers && req.headers.authorization);
-  if (!hasAuth) {
+  const hasCookie = (req.cookies && req.cookies.seahorse);
+  const hasAuthHeader = (req.headers && req.headers.authorization);
+
+  if (!hasCookie && !hasAuthHeader) {
     return next(createError(401));
   }
 
-  const [authType, token] = req.headers.authorization.split(' ');
-
-  if (authType !== 'Bearer') {
-    return next(createError(401));
+  let token = '';
+  if (hasCookie) {
+    token = req.cookies.seahorse;
+  } else {
+    let authType = '';
+    [authType, token] = req.headers.authorization.split(' ');
+    if (authType !== 'Bearer') {
+      return next(createError(401));
+    }
   }
 
   try {
@@ -138,9 +152,9 @@ function getAuth(req, res, next) {
     },
   };
 
-  User.findOne(search)
+  return User.findOne(search)
     .then((user) => {
-      const { globalUserId, password } = user.dataValues;
+      const { globalUserId, password, firstName } = user.dataValues;
 
       bcrypt.compare(reqPassword, password)
         .then((matched) => {
@@ -148,16 +162,16 @@ function getAuth(req, res, next) {
             return next({ number: 401, message: 'Not Authorized' });
           }
 
-          const token = getToken(globalUserId);
-          return res.cookie('seahorse', token).status(200).json({ auth: true, token });
+          const token = getToken(globalUserId, firstName);
+          return res.cookie('seahorse', token, cookieOptions)
+            .status(200)
+            .json({ auth: true, token, firstName });
         })
         .catch(() => {
           next({ number: 500, message: 'Internal System Error' });
         });
     })
-    .catch(() => {
-      return next({ error: 500, message: 'Internal Server Error' });
-    });
+    .catch(() => next({ error: 500, message: 'Internal Server Error' }));
 }
 
 router.post('/register', register);
@@ -167,3 +181,4 @@ module.exports = {
   register: router,
   checkAuth,
 };
+
