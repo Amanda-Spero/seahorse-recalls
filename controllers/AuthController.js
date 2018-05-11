@@ -1,11 +1,8 @@
 const express = require('express');
 const createError = require('http-errors');
-const cookieParser = require('cookie-parser');
+const db = require('../models');
 
 const router = express.Router();
-
-const User = require('../models/User');
-
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
@@ -66,14 +63,14 @@ function register(req, res, next) {
   }
 
   // Check if user exists.  Create it if it does not.
-  User.findOne({ where: { email: req.body.email.toString() } })
+  db.user.findOne({ where: { email: req.body.email.toString() } })
     .then((user) => {
       if (user) {
         return next(createError(409, 'User already exists.'));
       }
       bcrypt.hash(req.body.password, hashOpt.saltRounds)
         .then((hash) => {
-          User.create({
+          db.user.create({
             email: req.body.email,
             password: hash,
             firstName: req.body.firstName,
@@ -152,7 +149,7 @@ function getAuth(req, res, next) {
     },
   };
 
-  return User.findOne(search)
+  return db.user.findOne(search)
     .then((user) => {
       const { globalUserId, password, firstName } = user.dataValues;
 

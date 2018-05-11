@@ -1,49 +1,47 @@
-const sequelize = require("sequelize");
-const connection = require("../config/connection");
-
-const user = {
-  id: {
-    type: sequelize.INTEGER,
-    autoIncrement: true,
-    primaryKey: true,
-    allowNull: false,
-  },
-  firstName: {
-    type: sequelize.STRING,
-    allowNull: false,
-  },
-  lastName: {
-    type: sequelize.STRING,
-    allowNull: false,
-  },
-  password: {
-    type: sequelize.STRING,
-    allowNull: false,
-  },
-  email: {
-    type: sequelize.STRING,
-    allowNull: false,
-    validate: {
-      isEmail: true,
+module.exports = (sequelize, DataTypes) => {
+  const user = {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+      allowNull: false,
     },
-  },
-  globalUserId: {
-    type: sequelize.UUID,
-    defaultValue: sequelize.UUIDV4,
-  },
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isEmail: true,
+      },
+    },
+    globalUserId: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+    },
+  };
+
+  const indexes = [
+    {
+      unique: true,
+      fields: ['email'],
+    },
+    {
+      fields: ['globalId'],
+    },
+  ];
+
+  const User = sequelize.define('user', user, indexes);
+
+  return User;
 };
-
-const indexes = [
-  {
-    unique: true,
-    fields: ['email'],
-  },
-  {
-    fields: ['globalId'],
-  },
-];
-
-const User = connection.define("user", user, indexes);
-User.sync();
-
-module.exports = User;

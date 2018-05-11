@@ -38,6 +38,10 @@ app.use(logErrors);
 app.use(errorHandler);
 app.use(erorNotFound);
 
-app.listen(PORT, () => {
-  return console.log(`Server listening on: http://localhost: ${PORT}`);
+const db = require('./models');
+
+db.sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => {
+    return console.log(`Server listening on: http://localhost: ${PORT}`);
+  });
 });

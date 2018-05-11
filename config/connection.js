@@ -13,7 +13,7 @@ const sequelize = new Sequelize(sql.database, sql.username, sql.password, {
     min: 0,
     idle: 10000,
   },
-  logging: false,
+  // logging: false,
 });
 
 // Exports the connection for other files to use
