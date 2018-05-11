@@ -32,6 +32,12 @@ app.get('/test', checkAuth, (req, res) => {
   res.render('index', { name: req.userInfo.name });
 });
 
+const userCtrl = require('./controllers/UserController');
+
+app.use('/users', userCtrl);
+
+
+/* ************ THESE GO LAST ************** */
 const { erorNotFound, logErrors, errorHandler } = require('./controllers/ErrorController');
 
 app.use(logErrors);
