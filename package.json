@@ -21,7 +21,9 @@
     "express-handlebars": "^3.0.0",
     "http-errors": "^1.6.3",
     "jsonwebtoken": "^8.2.1",
+    "mysql": "^2.15.0",
     "mysql2": "^1.5.3",
+    "nodemon": "^1.17.4",
     "npm": "^6.0.0",
     "sequelize": "^4.37.6"
   },
@@ -30,5 +32,13 @@
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jdolla/project2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jdolla/project2/issues"
+  },
+  "homepage": "https://github.com/jdolla/project2#readme"
 }
