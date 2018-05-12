@@ -24,6 +24,9 @@ const { checkAuth, register } = require('./controllers/AuthController');
 
 app.use('/api/auth', register);
 
+
+// NEW ROUTES HERE
+
 app.get('/', (req, res) => {
   res.render('index');
 });
@@ -36,6 +39,8 @@ const userCtrl = require('./controllers/UserController');
 
 app.use('/users', userCtrl);
 
+
+// NEW ROUTES ^^ There
 
 /* ************ THESE GO LAST ************** */
 const { erorNotFound, logErrors, errorHandler } = require('./controllers/ErrorController');
