@@ -18,31 +18,23 @@ app.use(bodyParser.json());
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-// Authorization
-// TODO: return here and add the 'checkAuth' to restricted routes
-const { checkAuth, register } = require('./controllers/AuthController');
-
-app.use('/api/auth', register);
+/* **************** REQUIRE ROUTES ********************** */
+const { checkAuth } = require('./controllers/AuthController');
+const { userController } = require('./controllers/UserController');
 
 
-// NEW ROUTES HERE
+/*  **************** USE ROUTES **********************
+      - Place all new routes here
+      - Add 'checkAuth' to a route if it should be 'secure'
+    ************************************************* */
+app.use('/api/auth', userController);
 
 app.get('/', (req, res) => {
   res.render('index');
 });
 
-app.get('/test', checkAuth, (req, res) => {
-  res.render('index', { name: req.userInfo.name });
-});
 
-const userCtrl = require('./controllers/UserController');
-
-app.use('/users', userCtrl);
-
-
-// NEW ROUTES ^^ There
-
-/* ************ THESE GO LAST ************** */
+/* ************ Error Handling Middleware ************** */
 const { erorNotFound, logErrors, errorHandler } = require('./controllers/ErrorController');
 
 app.use(logErrors);
