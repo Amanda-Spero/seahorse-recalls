@@ -21,17 +21,25 @@ app.set('view engine', 'handlebars');
 /* **************** REQUIRE ROUTES ********************** */
 const { checkAuth } = require('./controllers/AuthController');
 const { userController } = require('./controllers/UserController');
+const {
+  renderLandingPage,
+  renderRegisterPage,
+  renderLoginPage,
+  renderSearchPage,
+  renderAccountPage,
+} = require('./controllers/HtmlController');
 
 
-/*  **************** USE ROUTES **********************
-      - Place all new routes here
+/*  **************** HTML ROUTES **********************
+      - Add new routes here.
       - Add 'checkAuth' to a route if it should be 'secure'
     ************************************************* */
+app.use('/register', renderRegisterPage);
+app.use('/login', renderLoginPage);
+app.use('/search', renderSearchPage);
+app.use('/account', checkAuth, renderAccountPage);
 app.use('/api/auth', userController);
-
-app.get('/', (req, res) => {
-  res.render('index');
-});
+app.use('/', renderLandingPage);
 
 
 /* ************ Error Handling Middleware ************** */
