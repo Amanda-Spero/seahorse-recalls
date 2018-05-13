@@ -61,6 +61,7 @@ function register(req, res, next) {
             password: hash,
             firstName: req.body.firstName,
             lastName: req.body.lastName,
+            enableNotification: req.body.enableNotification,
           })
             .then((result) => {
               const token = getToken(result.globalUserId, result.firstName);
