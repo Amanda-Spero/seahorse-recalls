@@ -34,7 +34,7 @@ const sql = {
   database: process.env.database || 'project2db',
   host: process.env.host || 'localhost',
   username: process.env.username || 'root',
-  password: process.env.password || '',
+  password: process.env.password || process.env.MYSQL_PWD,
 };
 
 
