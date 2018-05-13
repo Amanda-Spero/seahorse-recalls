@@ -5,11 +5,6 @@ exports.renderLandingPage = (req, res, next) => {
 };
 
 
-exports.renderRegisterPage = (req, res, next) => {
-  return res.render('register');
-};
-
-
 exports.renderLoginPage = (req, res, next) => {
   return res.render('login');
 };

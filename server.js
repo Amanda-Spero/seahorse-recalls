@@ -23,7 +23,6 @@ const { checkAuth } = require('./controllers/AuthController');
 const { userController } = require('./controllers/UserController');
 const {
   renderLandingPage,
-  renderRegisterPage,
   renderLoginPage,
   renderSearchPage,
   renderAccountPage,
@@ -34,7 +33,6 @@ const {
       - Add new routes here.
       - Add 'checkAuth' to a route if it should be 'secure'
     ************************************************* */
-app.use('/register', renderRegisterPage);
 app.use('/login', renderLoginPage);
 app.use('/search', renderSearchPage);
 app.use('/account', checkAuth, renderAccountPage);
