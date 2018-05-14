@@ -47,7 +47,6 @@ registerButton.addEventListener('click', (event) => {
   if (!registerForm.checkValidity()) {
     return registerForm.reportValidity();
   }
-
   const newUser = {
     firstName: registerForm.firstName.value,
     lastName: registerForm.lastName.value,
@@ -63,12 +62,49 @@ registerButton.addEventListener('click', (event) => {
     }
 
     if (auth.number && auth.number === 409) {
-      return alert('User Already Exists');
+      return writeRegisterError('User already exists.');
     }
-    return alert('Unknwon Error');
+    return writeRegisterError('Unable to register.')
 
   }).catch((err) => {
-    debugger;
-    return alert('Unknown Error');
+    return writeRegisterError('Unable to register.')
   });
 });
+
+
+const loginForm = document.getElementById('loginForm');
+const loginButton = document.getElementById('loginBtn');
+
+loginButton.addEventListener('click', (event) => {
+  event.preventDefault();
+  if (!loginForm.checkValidity()) {
+    return loginForm.reportValidity();
+  }
+
+  const user = {
+    email: loginForm.email.value,
+    password: loginForm.password.value,
+  };
+
+  login(user).then((auth) => {
+    if (auth && auth.auth) {
+      const cookie = `projectAuth=${auth.token};max-age=1800`;
+      // document.cookie = cookie;
+      loginForm.reset();
+      return window.location.replace("account");
+    }
+    writeLoginError();
+  }).catch((error) => {
+    writeLoginError();
+  });
+});
+
+function writeLoginError(){
+  const p = document.getElementById("loginErrorMessage");
+  p.innerText = "Login Not Valid.";
+}
+
+function writeRegisterError(message){
+  const p = document.getElementById("registerErrorMessage");
+  p.innerText = message;
+}
