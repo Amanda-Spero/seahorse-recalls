@@ -54,6 +54,10 @@ registerButton.addEventListener('click', (event) => {
     password: registerForm.password.value,
   };
 
+  if (registerForm.password.value !== registerForm.verifyPassword.value) {
+    return writeRegisterError('Confirmed password does not match.');
+  }
+
   register(newUser).then((auth) => {
     if (auth && auth.auth) {
       registerForm.reset();
