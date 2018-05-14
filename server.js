@@ -19,7 +19,7 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 /* **************** REQUIRE ROUTES ********************** */
-const { checkAuth } = require('./controllers/AuthController');
+const { checkAuth, requireAuth } = require('./controllers/AuthController');
 const { userController } = require('./controllers/UserController');
 const {
   renderLandingPage,
@@ -31,11 +31,13 @@ const {
 
 /*  **************** HTML ROUTES **********************
       - Add new routes here.
-      - Add 'checkAuth' to a route if it should be 'secure'
+      - Add 'requireAuth' to a route if it should be 'secure'
+      - Add 'checkAuth' for insecure pages.
     ************************************************* */
+app.use(checkAuth); // This should run before all routes. It adds auth info to the header.
 app.use('/login', renderLoginPage);
 app.use('/search', renderSearchPage);
-app.use('/account', checkAuth, renderAccountPage);
+app.use('/account', requireAuth, renderAccountPage);
 app.use('/api/auth', userController);
 app.use('/', renderLandingPage);
 

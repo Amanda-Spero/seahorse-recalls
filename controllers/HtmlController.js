@@ -1,12 +1,22 @@
 /*  HELPER FUNCTIONS FOR HTML ROUTES  */
 
 exports.renderLandingPage = (req, res, next) => {
-  return res.render('index');
+  const renderArgs = {
+    authenticated: req.userInfo,
+    landingPage: true,
+  };
+
+  return res.render('index', { renderArgs });
 };
 
 
 exports.renderLoginPage = (req, res, next) => {
-  return res.render('login');
+  const renderArgs = {
+    authenticated: req.userInfo,
+    loginPage: true,
+    hideLogin: true,
+  };
+  return res.render('login', { renderArgs });
 };
 
 

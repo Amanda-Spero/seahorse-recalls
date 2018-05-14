@@ -33,12 +33,20 @@ exports.hashValue = async (clearValue) => {
 };
 
 
+exports.requireAuth = (req, res, next) => {
+  if (!req.userInfo) {
+    return next(createError(401));
+  }
+
+  return next();
+};
+
 exports.checkAuth = (req, res, next) => {
   const hasCookie = (req.cookies && req.cookies.seahorse);
   const hasAuthHeader = (req.headers && req.headers.authorization);
 
   if (!hasCookie && !hasAuthHeader) {
-    return next(createError(401));
+    return next();
   }
 
   let token = '';
@@ -48,7 +56,7 @@ exports.checkAuth = (req, res, next) => {
     let authType = '';
     [authType, token] = req.headers.authorization.split(' ');
     if (authType !== 'Bearer') {
-      return next(createError(401));
+      return next();
     }
   }
 
@@ -57,9 +65,9 @@ exports.checkAuth = (req, res, next) => {
     req.userInfo = decode;
   } catch (err) {
     if (err.name && err.name === 'TokenExpiredError') {
-      return next(createError(401));
+      return next();
     }
-    return next(createError(500));
+    return next();
   }
 
   return next();
