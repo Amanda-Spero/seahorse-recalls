@@ -13,8 +13,9 @@ exports.logErrors = (err, req, res, next) => {
 `${'*'.repeat(20)}
 DATE: ${Date.now()}
 URL: ${req.url}
-ERROR: ${(typeof (err) === 'object') ? JSON.stringify(err) : err}
+CLIENT_ERROR: ${(typeof (err) === 'object') ? JSON.stringify(err) : err}
 ${'*'.repeat(20)}`;
+
   console.log(errString);
   next(err);
 };
