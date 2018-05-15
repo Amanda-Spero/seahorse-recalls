@@ -6,8 +6,8 @@ const {
   hashValue,
   compareToHash,
 } = require('./AuthController');
-
 const db = require('../models');
+const { sendWelcome } = require('./NotificationController');
 
 const userController = express.Router();
 
@@ -68,6 +68,9 @@ function register(req, res, next) {
 
               // return res.cookie('seahorse', token, cookieOptions)
               setAuthCookie(res, token);
+
+              sendWelcome(req.body.email, req.body.firstName);
+
               return res.status(200)
                 .json({ auth: true, token });
             })

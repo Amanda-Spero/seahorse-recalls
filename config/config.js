@@ -38,8 +38,11 @@ const sql = {
 };
 
 
+const sendgrid = process.env.SENDGRID_API_KEY;
+
 module.exports = {
   sql,
   tknOpt,
   hashOpt,
+  sendgrid,
 };
