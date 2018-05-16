@@ -35,19 +35,14 @@
       <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/login.css" />
     {{/if}}
 
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/index.css" />
+
   </head>
 
   <body>
 
     <header>
-      {{!-- Renders the login or logout partial depending on auth status --}}
-      {{#unless renderArgs.hideLogin}}
-        {{#if renderArgs.authenticated}}
-          {{> logout-header}}
-        {{else}}
-          {{> login-header }}
-        {{/if}}
-      {{/unless}}
+      {{!-- Add Headers Here:  This will show up on every page --}}
     </header>
 
     {{{body}}}
