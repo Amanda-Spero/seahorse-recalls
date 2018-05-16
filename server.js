@@ -18,26 +18,31 @@ app.use(bodyParser.json());
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-// Authorization
-// TODO: return here and add the 'checkAuth' to restricted routes
-const { checkAuth, register } = require('./controllers/AuthController');
-
-app.use('/api/auth', register);
-
-app.get('/', (req, res) => {
-  res.render('index');
-});
-
-app.get('/test', checkAuth, (req, res) => {
-  res.render('index', { name: req.userInfo.name });
-});
-
-const userCtrl = require('./controllers/UserController');
-
-app.use('/users', userCtrl);
+/* **************** REQUIRE ROUTES ********************** */
+const { checkAuth, requireAuth } = require('./controllers/AuthController');
+const { userController } = require('./controllers/UserController');
+const {
+  renderLandingPage,
+  renderLoginPage,
+  renderSearchPage,
+  renderAccountPage,
+} = require('./controllers/HtmlController');
 
 
-/* ************ THESE GO LAST ************** */
+/*  **************** HTML ROUTES **********************
+      - Add new routes here.
+      - Add 'requireAuth' to a route if it should be 'secure'
+      - Add 'checkAuth' for insecure pages.
+    ************************************************* */
+app.use(checkAuth); // This should run before all routes. It adds auth info to the header.
+app.use('/login', renderLoginPage);
+app.use('/search', renderSearchPage);
+app.use('/account', requireAuth, renderAccountPage);
+app.use('/api/auth', userController);
+app.use('/', renderLandingPage);
+
+
+/* ************ Error Handling Middleware ************** */
 const { erorNotFound, logErrors, errorHandler } = require('./controllers/ErrorController');
 
 app.use(logErrors);

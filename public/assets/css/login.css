@@ -1,0 +1,99 @@
+#loginOrRegister {
+  max-width: 100%;
+  margin-top: 10px;
+}
+
+#loginOrRegister * {
+  box-sizing: border-box;
+}
+
+#loginOrRegister .tab-container {
+  margin: auto;
+  min-width: 200px;
+  max-width: 600px;
+  background-color: lightgray;
+  padding: 0 10px 10px 10px;
+  border-radius: 5px;
+  min-height: 310px;
+}
+
+#loginOrRegister .form-container {
+  margin-top: 15px;
+}
+
+#loginOrRegister form>div {
+  margin-top: 15px;
+}
+
+#loginOrRegister .col2 {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+#loginOrRegister label {
+  margin-bottom: 0;
+}
+
+#loginOrRegister input {
+  width: 100%;
+  padding: 0 2px;
+  border-radius: 2.5px;
+  border-style: none;
+}
+
+#loginOrRegister input:focus {
+  outline-color: darkgrey;
+}
+
+#loginOrRegister .left {
+  padding-right: 7.5px;
+}
+
+#loginOrRegister .right {
+  padding-left: 7.5px;
+}
+
+#loginOrRegister .tab-button {
+  outline: 0;
+  border-top: 1.5px solid silver;
+  border-left: 1.5px solid silver;
+  border-right: 1.5px solid silver;
+  border-bottom: none;
+  width: 100%;
+  padding: 8px 16px;
+  font-weight: bold;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  margin-top: 5px;
+  background-color: lightgray;
+}
+
+#loginOrRegister .hidden {
+  display: none;
+}
+
+#loginOrRegister .active {
+  background-color: gray;
+  color: black;
+}
+
+#loginOrRegister .tab-button:hover {
+  background-color: gray;
+  color: black;
+}
+
+#loginOrRegister button[type=submit] {
+  outline: 1px gray;
+  border-bottom: 1.5px silver;
+  padding: 8px 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-top: 5px;
+  background-color: gray;
+  color: black;
+  width: 100px;
+}
+
+#loginOrRegister .col1 {
+  text-align: right;
+}
