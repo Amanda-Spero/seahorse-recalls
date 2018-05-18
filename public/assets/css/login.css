@@ -2,18 +2,21 @@
   font-family: Verdana, Geneva, sans-serif;	
 
 }
-body {
+#background-pic {
   width: 100%;
   height: auto;
   opacity: 0.333;
   z-index: 10;
   margin: 0;
-  padding: 0;  
-  background-image: url(/assets/images/misc/background.jpg);
-
-
+  padding: 0; 
 }
+#form-bottom {
 
+  z-index: 10000;
+  background-color: #4f95b3; 
+  height: 200px;
+
+} 
 
 #loginOrRegister {
   max-width: 100%;
