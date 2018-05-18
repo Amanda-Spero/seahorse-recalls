@@ -1,8 +1,7 @@
-body {
-  background-image: url("../images/misc/background.jpg");
-  background-size: cover;
-}
+* {
+  font-family: Verdana, Geneva, sans-serif;	
 
+}
 #background-pic {
   width: 100%;
   height: auto;
