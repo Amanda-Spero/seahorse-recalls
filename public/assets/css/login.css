@@ -10,13 +10,16 @@ body {
 
 #loginOrRegister * {
   box-sizing: border-box;
+  z-index: 10000;
+  background-color: #4f95b3; 
+  height: 200px;
 }
 
 #loginOrRegister .tab-container {
   margin: auto;
   min-width: 200px;
   max-width: 600px;
-  background-color: lightgray;
+  background-color: grey;
   padding: 0 10px 10px 10px;
   border-radius: 5px;
   min-height: 310px;
@@ -58,21 +61,6 @@ body {
   padding-left: 7.5px;
 }
 
-#loginOrRegister .tab-button {
-  outline: 0;
-  border-top: 1.5px solid silver;
-  border-left: 1.5px solid silver;
-  border-right: 1.5px solid silver;
-  border-bottom: none;
-  width: 100%;
-  padding: 8px 16px;
-  font-weight: bold;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
-  margin-top: 5px;
-  background-color: lightgray;
-}
-
 #loginOrRegister .hidden {
   display: none;
 }
@@ -82,21 +70,14 @@ body {
   color: black;
 }
 
-#loginOrRegister .tab-button:hover {
-  background-color: gray;
-  color: black;
-}
-
-#loginOrRegister button[type=submit] {
-  outline: 1px gray;
-  border-bottom: 1.5px silver;
-  padding: 8px 16px;
-  font-weight: bold;
-  border-radius: 5px;
-  margin-top: 5px;
-  background-color: gray;
-  color: black;
-  width: 100px;
+.btn {
+  background-color :#b43104;
+  color: lightgray;
+  width: 150px;
+  height: 100px;
+  margin-top: 30%;
+  white-space: normal;
+     
 }
 
 #loginOrRegister .col1 {
