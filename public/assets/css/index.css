@@ -111,14 +111,38 @@
     background-color: cadetblue;
     height: 15em;
     width: 50em;
-    border-color: black;
-    border-width: 6px;
-    margin-top: 5em;
+    margin-top: 7.5em;
 }
 
-.row{
+#results-box{
+    width: 62em;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-top: 25em;
+    height: 15em;
+    width: 36em;
+    color: white;
+   
+    
 }
 
+#results-header{
+    background: #181818;
+    width: 35em;
+    height: 2em;
+
+}
+
+#results-body{
+    background: cadetblue;
+    overflow: auto;
+}
+
+.table-row
 
 input:focus {
     border-color: #b32d00 !important;
@@ -155,29 +179,11 @@ input:focus {
     height: 50px;
 }
 
-#results-table{
-    width: 62em;
-    position: absolute;
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin-top: 25em;  
-}
 
-#table-header{
-    background: #202020;
-}
-
-#table-body{
-    overflow: scroll;
-    background: #686868;
-    height: 10em;
-}
 
 tr.clickableRow { 
     cursor: pointer; 
+    display: block;
 } 
 
 
@@ -192,3 +198,5 @@ tr.clickableRow {
 @media all and (orientation:landscape) { 
 
 }
+
+
