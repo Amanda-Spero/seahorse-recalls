@@ -98,3 +98,22 @@
 #loginOrRegister .col1 {
   text-align: right;
 }
+
+#text_over_image {
+  margin: 30px;
+  top: 30em;
+  bottom: 30em;
+  left: 30em;
+  right: 30em;
+}
+
+.btn {
+  background-color :#b43104;
+  color: lightgray;
+  width: 150px;
+  height: 100px;
+  margin-top: 30%;
+  white-space: normal;
+     
+}
+
