@@ -76,7 +76,7 @@
   <!--beginning of registration form-->
   <div class="container">
     <div class="registerForm">
-      <form class="form-horizontal" role="form" method="POST" action="/register">
+      <form class="form-horizontal" id="registerForm" role="form" method="POST" action="/register">
         <div class="row">
           <div class="col-md-3"></div>
           <div class="col-md-6">
@@ -88,13 +88,23 @@
           <div class="col-md-3 field-label-responsive">
             <label for="name">Name</label>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6">"
             <div class="form-group">
               <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                 <div class="input-group-addon" style="width: 2.6rem">
                   <i class="fa fa-user"></i>
                 </div>
-                <input type="text" name="name" class="form-control" id="name" placeholder="John Doe" required autofocus>
+                <input type="text" name="name" class="form-control" id="firstName" placeholder="John" required autofocus>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">"
+            <div class="form-group">
+              <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                <div class="input-group-addon" style="width: 2.6rem">
+                  <i class="fa fa-user"></i>
+                </div>
+                <input type="text" name="name" class="form-control" id="lastName" placeholder="Doe" required autofocus>
               </div>
             </div>
           </div>
@@ -168,7 +178,7 @@
         <div class="row">
           <div class="col-md-3"></div>
           <div class="col-md-6">
-            <button type="submit" class="btn">
+            <button type="submit" class="btn" id="registerBtn">
               <i class="fa fa-user-plus"></i> Register</button>
           </div>
         </div>
