@@ -1,3 +1,117 @@
 #!/usr/bin/env node
 
-console.log("I ran!");
+const mysql = require('mysql2/promise');
+const axios = require('axios');
+const sgMail = require('@sendgrid/mail');
+
+
+const sendgrid = process.env.SENDGRID_API_KEY;
+sgMail.setApiKey(sendgrid);
+
+
+const sql = {
+  database: process.env.database || 'project2db',
+  host: process.env.host || 'localhost',
+  username: process.env.username || 'root',
+  password: process.env.password || process.env.MYSQL_PWD || 'password',
+};
+
+const deactivateSearch = async (UserId) => {
+  const updateQuery = `
+  update savedSearches
+  set notified = Now()
+  Where id = ?;
+  `
+
+  const connection = await mysql.createConnection({
+    host: sql.host,
+    user: sql.username,
+    database: sql.database,
+    password: sql.password,
+  });
+
+  connection.execute(updateQuery, [UserId]);
+};
+
+const getSearches = async () => {
+  const query = `
+  select u.id as UserId
+  , u.firstName
+  , u.email
+  , ss.id as SearchId
+  , ss.make
+  , ss.model
+  , ss.year
+  , ss.notified
+  from users u
+  inner join savedSearches ss
+  on ss.userid = u.id
+  where ss.notified is null;
+  `;
+
+  const connection = await mysql.createConnection({
+    host: sql.host,
+    user: sql.username,
+    database: sql.database,
+    password: sql.password,
+  });
+
+  const [ rows, fields ] = await connection.execute(query);
+
+  connection.close();
+  return [rows, fields];
+
+};
+
+const searchNhtsa = async (make, model, year) => {
+  const uri = `https://webapi.nhtsa.gov/api/Recalls/vehicle/`;
+  const queryUri = uri + encodeURI(`modelyear/${year}/make/${make}/model/${model}?format=json`);
+  return await axios.get(queryUri).then(result => result.data);
+};
+
+const sendEmail = (email, htmlMessage, mailSubject) => {
+  const msg = {
+    to: email,
+    from: 'mail@seahorse-team-project.herokuapp.com',
+    subject: mailSubject,
+    html: htmlMessage,
+  };
+
+
+  sgMail.send(msg);
+};
+
+const getHtmlDetails = (recalls) => {
+  const rows = recalls.map( recall => {
+    return (
+      '<tr><th>Component</th><td>' + recall.Component + '</td></tr>' +
+      '<tr><th>Issue</th><td>' + recall.Conequence + '</td></tr>'
+    );
+    return recall;
+  });
+  return '<table>' + rows.join('\n') + '</table>';
+};
+
+getSearches().then( results => {
+  const searches = results[0];
+
+  for (let i = 0; i < searches.length; i++) {
+    const search = searches[i];
+
+    searchNhtsa(search.make, search.model, search.year)
+      .then( findings => {
+        if (findings.Count > 0){
+          const htmlTable = getHtmlDetails(findings.Results);
+          const htmlMessage = `<h3>Hello ${search.firstName}</h3><br>It looks like there has been some activity.<br><br>${htmlTable}`;
+
+          const subject = `Recall Found: ${search.make} - ${search.model}`;
+          sendEmail(search.email, htmlMessage, subject);
+          deactivateSearch(search.SearchId);
+
+        }
+      })
+  }
+
+});
+
+console.log('Starting Send Mail Job');
