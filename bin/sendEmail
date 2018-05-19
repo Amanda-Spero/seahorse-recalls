@@ -84,7 +84,7 @@ const sendEmail = (email, htmlMessage, mailSubject) => {
 const getHtmlDetails = (recalls) => {
   const rows = recalls.map( recall => {
     return (
-      '<tr><th>Componet</th><td>' + recall.Component + '</td></tr>' +
+      '<tr><th>Component</th><td>' + recall.Component + '</td></tr>' +
       '<tr><th>Issue</th><td>' + recall.Conequence + '</td></tr>'
     );
     return recall;
