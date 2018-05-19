@@ -85,35 +85,52 @@
   color: black;
 }
 
-.btn {
-  background-color :#b43104;
-  color: lightgray;
-  width: 150px;
-  height: 100px;
-  margin-top: 30%;
-  white-space: normal;
-     
-}
 
 #loginOrRegister .col1 {
   text-align: right;
 }
+* {
+  font-family: Verdana, Geneva, sans-serif;	
 
-#text_over_image {
-  margin: 30px;
-  top: 30em;
-  bottom: 30em;
-  left: 30em;
-  right: 30em;
 }
+#jumbotron{
+  background-image: url(/assets/images/misc/background.jpg);
+  width: "1920"; 
+  height:"1080";
+  opacity: 0.333;
+  width: 100%;
+  height: auto; 
+}
+#container-fluid {
 
+  z-index: 10000;
+  background-color: #4f95b3; 
+  height: 200px;
+
+} 
+#loginForm {
+  background-color:#5f9ea0;
+  margin:auto;
+  color: whitesmoke;
+}
+#registerForm{
+  background-color: whitesmoke;
+}
 .btn {
   background-color :#b43104;
   color: lightgray;
-  width: 150px;
-  height: 100px;
-  margin-top: 30%;
-  white-space: normal;
-     
+ }
+#text_over_image {
+  font-family: Impact, 'Arial Narrow Bold', Helvetica, Verdana, Geneva, sans-serif;
+  font-weight: 900;
+  font-size: 5em;
+  letter-spacing: .1em;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: black;
+  height: 8em;
 }
-
