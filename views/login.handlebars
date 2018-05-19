@@ -1,63 +1,40 @@
-<div id="loginOrRegister">
+<div class="jumbotron">
+  <img src="/assets/images/misc/background.jpg" id="background-pic" width="1920" height="1080">
+</div>
 
-  <div class="tab-container">
-    <div class="tab-buttons">
-      <div class="col2">
-        <div class="left">
-          <button class="tab-button active" id="loginRegister" data-target="registerForm">Register</button>
-        </div>
-        <div class="right">
-          <button class="tab-button" id="loginSignIn" data-target="loginForm">Sign In</button>
+
+<div id="container-fluid">
+  <div id="loginOrRegister">
+
+    <div class="tab-container">
+      <div class="tab-buttons">
+        <div class="col2">
+          <div class="left">
+            <button class="tab-button active btn" id="loginRegister" data-target="registerForm">Register</button>
+          </div>`
+          <div class="right">
+            <button class="btn" id="loginSignIn" data-target="loginForm">Sign In</button>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="form-container">
-      <div class="register-form">
-        <form action="submit" id="registerForm">
-          <div class="col2">
-            <div class="left">
-              <label for="firstName">First Name</label>
-              <br>
-              <input type="text" placeholder="Enter your first name" required name="firstName">
+      <div class="form-container">
+
+
+
+        <div class="register-form">
+          <form action="submit" id="registerForm">
+            <div class="col2">
+              <div class="left">
+                <label for="firstName">First Name</label>
+                <br>
+                <input type="text" placeholder="First Name" required name="firstName">
+              </div>
+              <div class="right">
+                <label for="lastName">Last Name</label>
+                <br>
+                <input type="text" placeholder="Last name" required name="lastName">
+              </div>
             </div>
-            <div class="right">
-              <label for="lastName">Last Name</label>
-              <br>
-              <input type="text" placeholder="Enter your last name" required name="lastName">
-            </div>
-          </div>
-          <div class="email">
-            <label for="email">Email Address</label>
-            <br/>
-            <input type="email" name="email" required placeholder="Enter your email address">
-          </div>
-          <div class="col2">
-            <div class="left">
-              <label for="password">Password</label>
-              <br>
-              <input type="password" placeholder="Enter a password" required name="password">
-            </div>
-            <div class="right">
-              <label for="verifyPassword">Confirm Password</label>
-              <br>
-              <input type="password" placeholder="Confirm password" required name="verifyPassword">
-            </div>
-          </div>
-          <div class="col2">
-            <div class="left">
-              <p id="registerErrorMessage"></p>
-            </div>
-            <div class="right" style="text-align: right;">
-              <button type="submit" id="registerBtn">
-                Sign Up
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="login-form">
-        <div class="login-form ">
-          <form action="submit" id="loginForm" class="hidden">
             <div class="email">
               <label for="email">Email Address</label>
               <br/>
@@ -70,24 +47,59 @@
                 <input type="password" placeholder="Enter a password" required name="password">
               </div>
               <div class="right">
+                <label for="verifyPassword">Confirm Password</label>
+                <br>
+                <input type="password" placeholder="Confirm password" required name="verifyPassword">
               </div>
             </div>
-            <div class="col2" style="margin-top: 77px;">
+            <div class="col2">
               <div class="left">
-                <p id="loginErrorMessage"></p>
+                <p id="registerErrorMessage"></p>
               </div>
               <div class="right" style="text-align: right;">
-                <button type="submit" id="loginBtn">
-                  Sign In
+                <button type="submit" class="btn" id="registerBtn">
+                  Sign Up
                 </button>
               </div>
             </div>
           </form>
         </div>
+
+
+
+        <div class="login-form">
+          <div class="login-form ">
+            <form action="submit" id="loginForm" class="hidden">
+              <div class="email">
+                <label for="email">Email Address</label>
+                <br/>
+                <input type="email" name="email" required placeholder="Enter your email address">
+              </div>
+              <div class="col2">
+                <div class="left">
+                  <label for="password">Password</label>
+                  <br>
+                  <input type="password" placeholder="Enter a password" required name="password">
+                </div>
+                <div class="right">
+                </div>
+              </div>
+              <div class="col2" style="margin-top: 77px;">
+                <div class="left">
+                  <p id="loginErrorMessage"></p>
+                </div>
+                <div class="right" style="text-align: right;">
+                  <button type="submit" class="btn" id="loginBtn">
+                    Sign In
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
+
   </div>
-
 </div>
-
 <script src="/assets/js/login.js"></script>
