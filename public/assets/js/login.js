@@ -41,7 +41,7 @@ registerButton.addEventListener('click', (event) => {
 });
 
 
-const loginForm = document.getElementById('loginForm');
+const loginForm = document.getElementById('theLoginForm');
 const loginButton = document.getElementById('loginBtn');
 
 loginButton.addEventListener('click', (event) => {
@@ -49,7 +49,7 @@ loginButton.addEventListener('click', (event) => {
   if (!loginForm.checkValidity()) {
     return loginForm.reportValidity();
   }
-
+debugger;
   const user = {
     email: loginForm.email.value,
     password: loginForm.password.value,
