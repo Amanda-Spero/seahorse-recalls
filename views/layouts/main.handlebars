@@ -6,7 +6,7 @@
     <title>Seahorse</title>
 
     {{!-- various logos:  please feel free to change this --}}
-   
+
     <link rel="apple-touch-icon" sizes="57x57" href="/assets/images/seahorse/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/assets/images/seahorse/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="/assets/images/seahorse/apple-icon-72x72.png">
@@ -44,40 +44,49 @@
     <header>
       <nav class="navbar fixed-top navbar-expand-lg navbar-dark" id="navbar">
         <a class="navbar-brand" href="#">
-          <img src="/public/assets/images/favicon-32x32.png" width="30" height="30" alt="">
-          SEAHORSE RECALLS
+          <img src="/public/assets/images/favicon-32x32.png" width="30" height="30" alt=""> SEAHORSE RECALLS
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                  <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Search</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Log In</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Sign Up</a>
-                  </li>
-                </ul>
-              </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Search</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Log In</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Sign Up</a>
+            </li>
+          </ul>
+        </div>
 
       </nav>
     </header>
- 
+    <!--BACKGROUND WRAPPER-->
+    <div class="wrap">
+      <div>
+        <img src="background_2.jpeg" id="background-pic" width="1920" height="1080">
 
-<div class="wrap">
-    {{{body}}}
-</div>
-  <div class="footer">
-            <p>Seahorse Recalls &#169; 2018</p> 
-  </div>
-</body>
+
+        <div>
+
+          {{{body}}}
+
+        </div>
+
+        <div class="footer">
+          <p>Seahorse Recalls &#169; 2018</p>
+        </div>
+  </body>
 
 
   {{!-- Add JavaScript Refrences Here --}}

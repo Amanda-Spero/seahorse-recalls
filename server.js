@@ -27,6 +27,7 @@ const {
   renderSearchPage,
   renderAccountPage,
 } = require('./controllers/HtmlController');
+const { accountController } = require('./controllers/AccountController');
 
 
 /*  **************** HTML ROUTES **********************
@@ -39,6 +40,7 @@ app.use('/login', renderLoginPage);
 app.use('/search', renderSearchPage);
 app.use('/account', requireAuth, renderAccountPage);
 app.use('/api/auth', userController);
+app.use('/api/account/', requireAuth, accountController);
 app.use('/', renderLandingPage);
 
 
