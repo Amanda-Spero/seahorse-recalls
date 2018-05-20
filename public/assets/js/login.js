@@ -49,7 +49,6 @@ loginButton.addEventListener('click', (event) => {
   if (!loginForm.checkValidity()) {
     return loginForm.reportValidity();
   }
-debugger;
   const user = {
     email: loginForm.email.value,
     password: loginForm.password.value,
