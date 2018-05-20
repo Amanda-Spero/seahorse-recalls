@@ -23,6 +23,7 @@ ${'*'.repeat(20)}`;
 exports.errorHandler = (err, req, res, next) => {
   const error = {
     number: err.status || 500,
+    unauthorized: err.status === 401,
   };
 
   switch (error.number) {
