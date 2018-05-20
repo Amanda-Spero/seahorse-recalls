@@ -1,17 +1,28 @@
 <div class="wrap">
   <div>
     <img src="/assets/images/misc/background.jpg" id="background-pic" width="1920" height="1080">
-    <div id="search-box" class=" d-flex flex-column row-hl">
+    <div style="position:absolute; margin: auto; top: 0; left: 0; right: 0; bottom: 0; background-color: cadetblue; height: 25em; max-width: 50em; min-width: 480px;">
       <div class="p-4 item-hl">
 
-        <p>{{message}}</p>
-        {{#if unauthorized}}
-
-        {{else}}
-          <h1>Oops... Sorry 'bout that.</h1>
-          <p>Looks like something wonky happened.</p>
-          <h2>Error Number: {{number}}</h2>
-        {{/if}}
+        <h1>Oops... We didn't see that one coming.</h1>
+        <div style="display:grid; grid-template-columns: 50% 50%; margin-top: 30px; height:210px;">
+          <div style="display:flex; flex-direction:column; justify-content:center">
+            <div>
+              <h2>Error {{number}}</h2>
+              <p>{{message}}</p>
+              {{#if unauthorized}}
+                <p style="font-size:15px; font-style:italic;">
+                  pssst...try
+                  <a href="/login" style="font-size: 20px; font-weight:bold">logging in</a>.
+                </p>
+              {{/if}}
+            </div>
+          </div>
+          <div style="position:relative;">
+            <img src="/assets/images/misc/error-unknown.png" alt="fallen piano" style="z-index: 50; max-width: 200px; position:absolute; margin-left: auto; margin-right: auto; left: 2px; right:0; top:13px;">
+            <img src="/assets/images/misc/error-unknown.png" alt="fallen piano" style="opacity: .30; max-width: 220px; position:absolute; margin-left: auto; margin-right: auto; left: 0; right:0;">
+          </div>
+        </div>
       </div>
       <div class="d-flex flex-column align-items-center row-hl" id="search-options">
 
