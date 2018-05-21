@@ -4,9 +4,10 @@ exports.renderLandingPage = (req, res, next) => {
   const renderArgs = {
     authenticated: req.userInfo,
     landingPage: true,
+    styleHomeNav: 'active',
   };
 
-  return res.render('index', { renderArgs });
+  return res.render('index', {renderArgs});
 };
 
 
@@ -14,6 +15,7 @@ exports.renderLoginPage = (req, res, next) => {
   const renderArgs = {
     authenticated: req.userInfo,
     loginPage: true,
+    styleLoginNav: 'active',
     hideLogin: true,
   };
   return res.render('login', { renderArgs });
@@ -21,10 +23,18 @@ exports.renderLoginPage = (req, res, next) => {
 
 
 exports.renderSearchPage = (req, res, next) => {
-  return res.render('search');
+  const renderArgs = {
+    authenticated: req.userInfo,
+    styleSearchNav: 'active',
+  };
+  return res.render('search', { renderArgs });
 };
 
 
 exports.renderAccountPage = (req, res, next) => {
-  return res.render('account');
+  const renderArgs = {
+    authenticated: req.userInfo,
+    styleAccountNav: 'active',
+  };
+  return res.render('account', { renderArgs });
 };
