@@ -28,3 +28,9 @@ exports.renderSearchPage = (req, res, next) => {
 exports.renderAccountPage = (req, res, next) => {
   return res.render('account');
 };
+
+//////////////??ADD RENDER FOR RECALL PAGE??//////////////////////
+exports.renderRecallPage = (req, res, next) => {
+  return res.render('recall');
+};
+/////////////////////////////////////////////////////////////
