@@ -17,6 +17,13 @@
   background-color:#5f9ea0;
   margin:auto;
   color: whitesmoke;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-top: 7.5em;
 }
 #form2 {
   background-color: whitesmoke;
@@ -42,4 +49,20 @@
   bottom: 0;
   color: black;
   height: 8em;
+}
+
+/* ****************RESPONSIVE STYLING****************** */
+
+@media all and (orientation:portrait) {}
+
+@media all and (orientation:landscape) {}
+
+@media (max-width: 992px) {
+    #navbarNav {
+        background-color: cadetblue;
+        padding-left: 5px;
+    }
+    #currentUser {
+        display: none;
+    }
 }
