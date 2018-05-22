@@ -1,19 +1,25 @@
 /*  HELPER FUNCTIONS FOR HTML ROUTES  */
 
+function username(req) {
+  if (req.userInfo && req.userInfo.name) {
+    return req.userInfo.name;
+  }
+}
+
 exports.renderLandingPage = (req, res, next) => {
   const renderArgs = {
-    authenticated: req.userInfo,
+    username: username(req),
     landingPage: true,
     styleHomeNav: 'active',
   };
 
-  return res.render('index', {renderArgs});
+  return res.render('index', { renderArgs });
 };
 
 
 exports.renderLoginPage = (req, res, next) => {
   const renderArgs = {
-    authenticated: req.userInfo,
+    username: username(req),
     loginPage: true,
     styleLoginNav: 'active',
     hideLogin: true,
@@ -24,7 +30,7 @@ exports.renderLoginPage = (req, res, next) => {
 
 exports.renderSearchPage = (req, res, next) => {
   const renderArgs = {
-    authenticated: req.userInfo,
+    username: username(req),
     styleSearchNav: 'active',
   };
   return res.render('search', { renderArgs });
@@ -33,7 +39,7 @@ exports.renderSearchPage = (req, res, next) => {
 
 exports.renderAccountPage = (req, res, next) => {
   const renderArgs = {
-    authenticated: req.userInfo,
+    username: username(req),
     styleAccountNav: 'active',
   };
   return res.render('account', { renderArgs });
