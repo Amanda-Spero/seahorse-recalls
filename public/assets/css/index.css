@@ -1,61 +1,316 @@
-* {
-    font-family: Verdana, Geneva, sans-serif;	
+/* ***********OVERALL STYLING**************/
 
+* {
+    font-family: Helvetica, Verdana, Geneva, sans-serif;
 }
 
-#index-top {
+header {
+    background-color: cadetblue;
+}
+
+.wrap {
     width: 100%;
     height: auto;
+    margin: auto;
+    text-align: center;
+    position: relative;
 }
 
 #background-pic {
     width: 100%;
-    height: auto;
-    opacity: 0.333;
-    z-index: 10;
+    height: 44em;
+    opacity: .6;
+    z-index: -10;
     margin: 0;
-    padding: 0;  
-
+    padding: 0;
 }
 
-#title {
-    font-size: 70px;
-    color: black;
-    text-align: center;
-    margin-top: -40%;
-    font-weight: 900;
-    z-index: 10000;
+#navbar {
+    background-color: cadetblue;
+    height: 3.5em;
 }
 
-/* #landing-title {
-    color: black;
-    opacity: 1;
-    font-size: 80px;
-    letter-spacing: 3.5px;
+#currentUser {
+    width: 100%;
     text-align: center;
-    margin-top: -140px;
+    color: whitesmoke;
+}
 
-}  */
-
-#index-bottom {
-
-    z-index: 10000;
-    background-color: #4f95b3; 
-    height: 200px;
-
-} 
+.footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: cadetblue;
+    color: lightgray;
+    text-align: center;
+    padding-top: 10px;
+    height: 50px;
+    /* float: bottom; */
+}
 
 .btn {
-    background-color :#b43104;
-    color: lightgray;
-    width: 150px;
-    height: 100px;
-    margin-top: 30%;
+    background-color: #b32d00;
+    color: rgb(48, 45, 45);
+    width: 12em;
+    height: 6em;
     white-space: normal;
-       
+    border-radius: 0 !important;
 }
 
 .btn:hover {
-    background-color: lightgray;
-    color: #b43104;
+    background-color: darkgray;
+    color: #b32d00;
+}
+
+/* ***********LANDING PAGE*************** */
+
+.text_over_image {
+    font-family: Impact, 'Arial Narrow Bold', Helvetica, Verdana, Geneva, sans-serif;
+    font-weight: 900;
+    font-size: 5em;
+    letter-spacing: .1em;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: black;
+    height: 4em;
+}
+
+.text_over_image2 {
+    font-family: Impact, 'Arial Narrow Bold', Helvetica, Verdana, Geneva, sans-serif;
+    font-size: 1.5em;
+    letter-spacing: .05em;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: black;
+    height: 3em;
+    opacity: .8;
+}
+
+#landing-box {
+    height: 10em;
+    width: 50em;
+    position: absolute;
+    margin-top: 30em;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/* **********SEARCH PAGE************ */
+
+#search-box {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: cadetblue;
+    height: 15em;
+    width: 50em;
+    margin-top: 7.5em;
+}
+
+#results-box {
+    width: 62em;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-top: 25em;
+    height: 15em;
+    width: 36em;
+    color: white;
+}
+
+#results-header {
+    background: #181818;
+    width: 35em;
+    height: 2em;
+}
+
+#results-body {
+    background: cadetblue;
+    overflow: auto;
+}
+
+input:focus {
+    border-color: #b32d00 !important;
+    box-shadow: 0 0 5px #b32d00 !important;
+}
+
+#search-header {
+    font-size: 25px;
+}
+
+#search-options {
+    height: 80px;
+}
+
+#search-Make {
+    display: inline;
+}
+
+#search-Model {
+    display: inline;
+}
+
+#search-Year {
+    display: inline
+}
+
+#search-results {
+    height: 50em;
+}
+
+#search-button {
+    margin-left: 320px;
+    margin-top: -20px;
+    height: 50px;
+}
+
+tr.clickableRow {
+    cursor: pointer;
+    display: block;
+}
+
+/****************** FOR RECALL.HANDLEBARS  *******************/
+
+/********* INFORMATION BOX FOR CAR AT THE TOP ***********/
+
+#car-row {
+    background: darkgray;
+    height: 13em;
+    width: 55em;
+    ;
+    top: 2em;
+    position: absolute;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.car-pic {
+    height: 13rem;
+    width: 20rem;
+    margin-left: 5rem;
+    margin-top: 0;
+    z-index: 20000;
+    background: blue;
+}
+
+.car-year {
+    height: 5rem;
+    width: 20rem;
+    margin-left: 25rem;
+    font-size: 2rem;
+    font-weight: bold;
+    padding-top: 4px;
+}
+
+.car-name {
+    height: 5rem;
+    width: 20rem;
+}
+
+.car-subname {
+    height: 5rem;
+    width: 20rem;
+    margin-left: -1.5rem;
+}
+
+/******** RECALL RESULTS DETAILS LIST **********/
+
+#recalls-box {
+    width: 62em;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-top: 20em;
+    height: 22em;
+    width: 60em;
+    color: black;
+    background: cadetblue;
+    outline: 2px solid #808080;
+    z-index: 10000;
+}
+
+.accordion {
+    background-color: cadetblue;
+    color: #202020;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    transition: 0.4s;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+
+.active,
+.accordion:hover {
+    background-color: #c0c0c0;
+}
+
+.accordion:after {
+    content: '\02795';
+    /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: white;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2796";
+    /* Unicode character for "minus" sign (-) */
+}
+
+/* Style the collapsible content. Note: hidden by default */
+
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: auto;
+    transition: max-height 0.2s ease-out;
+    color: black;
+    outline: 1px solid #808080;
+}
+
+/* ****************RESPONSIVE STYLING****************** */
+
+@media all and (orientation:portrait) {}
+
+@media all and (orientation:landscape) {}
+
+@media (max-width: 992px) {
+    #navbarNav {
+        background-color: cadetblue;
+        padding-left: 5px;
+    }
+    #currentUser {
+        display: none;
+    }
 }

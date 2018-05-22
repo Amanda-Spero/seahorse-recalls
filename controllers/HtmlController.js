@@ -1,9 +1,16 @@
 /*  HELPER FUNCTIONS FOR HTML ROUTES  */
 
+function username(req) {
+  if (req.userInfo && req.userInfo.name) {
+    return req.userInfo.name;
+  }
+}
+
 exports.renderLandingPage = (req, res, next) => {
   const renderArgs = {
-    authenticated: req.userInfo,
+    username: username(req),
     landingPage: true,
+    styleHomeNav: 'active',
   };
 
   return res.render('index', { renderArgs });
@@ -12,8 +19,9 @@ exports.renderLandingPage = (req, res, next) => {
 
 exports.renderLoginPage = (req, res, next) => {
   const renderArgs = {
-    authenticated: req.userInfo,
+    username: username(req),
     loginPage: true,
+    styleLoginNav: 'active',
     hideLogin: true,
   };
   return res.render('login', { renderArgs });
@@ -21,10 +29,18 @@ exports.renderLoginPage = (req, res, next) => {
 
 
 exports.renderSearchPage = (req, res, next) => {
-  return res.render('search');
+  const renderArgs = {
+    username: username(req),
+    styleSearchNav: 'active',
+  };
+  return res.render('search', { renderArgs });
 };
 
 
 exports.renderAccountPage = (req, res, next) => {
-  return res.render('account');
+  const renderArgs = {
+    username: username(req),
+    styleAccountNav: 'active',
+  };
+  return res.render('account', { renderArgs });
 };
