@@ -1,42 +1,43 @@
+{{!-- <!--SEARCH BOX-->             --}}
 
-    <!--SEARCH BOX-->            
+<div>
 
-            <div id="search-box" class=" d-flex flex-column row-hl">
-                    <div class="p-4 item-hl"id="search-header">Choose Vehicle Make, Model, and Year to Search for Recalls</div>
-                    <div class="d-flex flex-column align-items-center row-hl" id="search-options">
-                      <form>
-                          <div class="form-group form-group-inline" id="search-Make">
-                              <input type="text" class="form control" id="make-input" placeholder="Make">
-                          </div>
-                          <div class="form-group form-group-inline" id="search-Model">
-                                <input type="text" class="form control" id="model-input" placeholder="Model">
-                            </div>
-                            <div class="form-group form-group-inline" id="search-Year">
-                                <input type="text" class="form control" id="year-input" placeholder="Year (YYYY)">
-                            </div>
-                      </form>  
-                    </div>
-                    <input class="btn" id="search-button" type="submit" value="Search">
-            </div>
+  <div id="search-box" class="d-flex flex-column row-hl">
+    <div class="p-4 item-hl" id="search-header">Choose Vehicle Make, Model, and Year to Search for Recalls</div>
+    <div class="d-flex flex-column align-items-center row-hl" id="search-options">
+      <form>
+        <div class="form-group form-group-inline" id="search-Make">
+          <input type="text" class="form control" id="make-input" placeholder="Make">
         </div>
+        <div class="form-group form-group-inline" id="search-Model">
+          <input type="text" class="form control" id="model-input" placeholder="Model">
+        </div>
+        <div class="form-group form-group-inline" id="search-Year">
+          <input type="text" class="form control" id="year-input" placeholder="Year (YYYY)">
+        </div>
+      </form>
+    </div>
+    <input class="btn" id="search-button" type="submit" value="Search">
+  </div>
+
+
+  {{!-- <!--RESULTS TABLE--> --}}
+
+  <div class="table-responsive" id="results-box">
+    <table class="table">
+      <thead>
+        <tr>
+          <th id="results-header">VEHICLE RESULTS</th>
+          <tbody id="results-body">
+            <tr>
+              <td scope="row" class="clickable-row" data-url="{url}" id="table-row">
+                <a href="#"></a>
+              </td>
+            </tr>
+          </tbody>
+      </thead>
+    </table>
+  </div>
+
+
 </div>
-
-
-<!--RESULTS TABLE-->
-
-<div class="table-responsive" id="results-box">
-<table class="table">
-  <thead>
-    <tr>
-      <th id="results-header">VEHICLE RESULTS</th>
-    <tbody id="results-body">
-      <tr>
-          <td scope="row" class="clickable-row" data-url="{url}" id="table-row"><a href="#"></a></td>
-      </tr>
-    </tbody>                
-  </thread>
-</table>
-</div>
-
-
-
