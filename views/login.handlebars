@@ -5,7 +5,8 @@
   </div>
 
 </div>
-<div id="container-fluid">
+
+<div class="container-fluid">
   <div id="loginForm">
     <form id="theLoginForm" class="form-horizontal" role="form" method="POST" action="/login">
       <div class="row">
@@ -62,10 +63,16 @@
 
       <div class="row" style="padding-top: 1rem" "padding-bottom:1rem">
         <div class="col-md-3"></div>
+<<<<<<< HEAD
+        <div class="col-md-6"></div>
+        <div class="col-md-3">
+          <button type="button" class="btn">Login</button>
+=======
         <div class="col-md-6">
           <button id="loginBtn" type="button" class="btn">
 
             <i class="sign-in"></i> Login</button>
+>>>>>>> 56c276c5f4600f8fc6d6b36815e93bbffa518731
 
         </div>
       </div>
@@ -75,7 +82,7 @@
   <!--end of login form-->
 
   <!--beginning of registration form-->
-  <div class="container">
+  <div class="container-fluid">
     <div class="registerForm">
       <form class="form-horizontal" id="registerForm" role="form" method="POST" action="/register">
         <div class="row">
@@ -134,7 +141,9 @@
           <div class="col-md-3">
             <div class="form-control-feedback">
               <span class="text-danger align-middle">
-                <!-- Put e-mail validation error messages here -->
+
+                <!--  e-mail validation error messages here -->
+                <i class="fa fa-close" id="errorMsg"> E-mail Validation Error </i>
               </span>
             </div>
           </div>
