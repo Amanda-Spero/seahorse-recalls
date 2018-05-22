@@ -34,11 +34,18 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
     <!-- Stylesheets -->
+
+    {{!-- This one is for the overall site and should never be omitted --}}
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/index.css" />
+
+
     {{#if renderArgs.loginPage }}
       <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/login.css" />
     {{/if}}
 
-    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/index.css" />
+    {{#if renderArgs.accountPage }}
+      <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/account.css" />
+    {{/if}}
 
   </head>
 

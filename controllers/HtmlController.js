@@ -1,3 +1,6 @@
+const db = require('../models');
+
+
 /*  HELPER FUNCTIONS FOR HTML ROUTES  */
 
 function username(req) {
@@ -38,9 +41,24 @@ exports.renderSearchPage = (req, res, next) => {
 
 
 exports.renderAccountPage = (req, res, next) => {
-  const renderArgs = {
-    username: username(req),
-    styleAccountNav: 'active',
-  };
-  return res.render('account', { renderArgs });
+
+  db.user.findOne({
+    where: {
+      globalUserId: req.userInfo.id,
+    },
+  })
+  .then( user => {
+    const renderArgs = {
+      username: username(req),
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      styleAccountNav: 'active',
+      accountPage: true,
+    };
+    return res.render('account', { renderArgs });
+  })
+  .catch( err => {
+    return next(createError(500, 'Internal Server Error', {original: err,}))
+  })
 };
