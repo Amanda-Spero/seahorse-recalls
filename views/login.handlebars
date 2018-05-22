@@ -8,7 +8,7 @@
 
 <div class="container-fluid">
   <div id="loginForm">
-    <form class="form-horizontal" role="form" method="POST" action="/login">
+    <form id="theLoginForm" class="form-horizontal" role="form" method="POST" action="/login">
       <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6">
@@ -63,9 +63,16 @@
 
       <div class="row" style="padding-top: 1rem" "padding-bottom:1rem">
         <div class="col-md-3"></div>
+<<<<<<< HEAD
         <div class="col-md-6"></div>
         <div class="col-md-3">
           <button type="button" class="btn">Login</button>
+=======
+        <div class="col-md-6">
+          <button id="loginBtn" type="button" class="btn">
+
+            <i class="sign-in"></i> Login</button>
+>>>>>>> 56c276c5f4600f8fc6d6b36815e93bbffa518731
 
         </div>
       </div>
@@ -127,7 +134,7 @@
                 <div class="input-group-addon" style="width: 2.6rem">
                   <i class="fa fa-at"></i>
                 </div>
-                <input type="text" name="email" class="form-control" id="email" placeholder="you@example.com" required autofocus>
+                <input type="text" name="email" class="form-control" id="registerEmail" placeholder="you@example.com" required autofocus>
               </div>
             </div>
           </div>
@@ -151,7 +158,7 @@
                 <div class="input-group-addon" style="width: 2.6rem">
                   <i class="fa fa-key"></i>
                 </div>
-                <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+                <input type="password" name="password" class="form-control" id="registerPassword" placeholder="Password" required>
               </div>
             </div>
           </div>

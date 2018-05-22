@@ -6,7 +6,7 @@
     <title>Seahorse</title>
 
     {{!-- various logos:  please feel free to change this --}}
-   
+
     <link rel="apple-touch-icon" sizes="57x57" href="/assets/images/seahorse/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/assets/images/seahorse/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="/assets/images/seahorse/apple-icon-72x72.png">
@@ -30,6 +30,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
       crossorigin="anonymous">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
     <!-- Stylesheets -->
     {{#if renderArgs.loginPage }}
       <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/login.css" />
@@ -42,11 +45,51 @@
   <body>
 
     <header>
-      {{!-- Add Headers Here:  This will show up on every page --}}
+      <nav class="navbar fixed-top navbar-expand-lg navbar-dark" id="navbar">
+        <a class="navbar-brand" href="/">
+          <img src="/assets/images/seahorse/favicon-32x32.png" width="30" height="30" alt=""> SEAHORSE RECALLS
+        </a>
+        {{#if renderArgs.username}}
+          <div id="currentUser">
+            Welcome {{renderArgs.username}}!
+          </div>
+        {{/if}}
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item {{renderArgs.styleHomeNav}}">
+              <a class="nav-link" href="/">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item {{renderArgs.styleSearchNav}}">
+              <a class="nav-link" href="/search">Search</a>
+            </li>
+            <li class="nav-item {{renderArgs.styleAccountNav}}">
+              <a class="nav-link" href="/account">Account</a>
+            </li>
+            <li class="nav-item {{renderArgs.styleLoginNav}}">
+              {{#if renderArgs.username}}
+                <a href="#" class="nav-link" data-action="logout">Logout</a>
+              {{else}}
+                <a class="nav-link" href="/login">Login or Register</a>
+              {{/if}}
+            </li>
+          </ul>
+        </div>
+
+      </nav>
     </header>
 
-    {{{body}}}
-
+    <div class="wrap">
+      {{{body}}}
+    </div>
+    <div class="footer">
+      <p>Seahorse Recalls &#169; 2018</p>
+    </div>
   </body>
 
 
