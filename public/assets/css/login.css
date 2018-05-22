@@ -95,23 +95,25 @@
 }
 #jumbotron{
   background-image: url(/assets/images/misc/background.jpg);
-  width: "1920"; 
-  height:"1080";
+  width: "1920em"; 
+  height:"500em";
   opacity: 0.333;
-  width: 100%;
-  height: auto; 
+ 
 }
-#container-fluid {
+#form1 {
 
-  z-index: 10000;
+  z-index: 10000em;
   background-color: #4f95b3; 
-  height: 200px;
+  height: 200em;
 
 } 
 #loginForm {
   background-color:#5f9ea0;
   margin:auto;
   color: whitesmoke;
+}
+#form2 {
+  background-color: whitesmoke;
 }
 #registerForm{
   background-color: whitesmoke;

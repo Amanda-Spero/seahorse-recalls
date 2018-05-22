@@ -6,7 +6,7 @@
 
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid" id="form1">
   <div id="loginForm">
     <form id="theLoginForm" class="form-horizontal" role="form" method="POST" action="/login">
       <div class="row">
@@ -40,7 +40,10 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-3"></div>
+        <div class="col-md-3 field-label-responsive">
+            <label for="username">Password</label>
+        </div>
+        </div>
         <div class="col-md-6">
           <div class="form-group">
             <label class="sr-only" for="password">Password</label>
@@ -64,7 +67,7 @@
       <div class="row" style="padding-top: 1rem" "padding-bottom:1rem">
         <div class="col-md-3"></div>
         <div class="col-md-6">
-          <button id="loginBtn" type="button" class="btn">
+          <button  type="button" class="btn btn-block" id="loginBtn">
 
             <i class="sign-in"></i> Login</button>
 
@@ -76,7 +79,7 @@
   <!--end of login form-->
 
   <!--beginning of registration form-->
-  <div class="container-fluid">
+  <div class="container-fluid" id="form2">
     <div class="registerForm">
       <form class="form-horizontal" id="registerForm" role="form" method="POST" action="/register">
         <div class="row">
@@ -182,7 +185,7 @@
         <div class="row">
           <div class="col-md-3"></div>
           <div class="col-md-6">
-            <button type="button" class="btn" id="registerBtn">
+            <button type="button" class="btn btn-block" id="registerBtn">
               <i class="fa fa-user-plus"></i> Register</button>
           </div>
         </div>
