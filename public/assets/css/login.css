@@ -4,9 +4,7 @@
 }
 #jumbotron{
   background-image: url(/assets/images/misc/background.jpg);
-  width: "1920em"; 
-  height:"500em";
-  opacity: 0.333;
+   opacity: 0.333;
  
 }
 #form1 {
@@ -17,13 +15,6 @@
   background-color:#5f9ea0;
   margin:auto;
   color: whitesmoke;
-  position: absolute;
-  margin: auto;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin-top: 7.5em;
 }
 #form2 {
   background-color: whitesmoke;
