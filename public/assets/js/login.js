@@ -1,38 +1,3 @@
-const loginOrRegister = document.getElementById("loginOrRegister");
-
-function toggleTabs(activate, deactivate) {
-  const activateTarget = activate.getAttribute("data-target");
-  const deactivateTarget = deactivate.getAttribute("data-target");
-
-  const activateForm = document.getElementById(activateTarget);
-  const deactivateForm = document.getElementById(deactivateTarget);
-
-  activate.classList.toggle("active");
-  deactivate.classList.toggle("active");
-
-  activateForm.classList.toggle("hidden");
-  deactivateForm.classList.toggle("hidden");
-
-  return;
-}
-
-loginOrRegister.addEventListener("click", function(event) {
-  const target = event.target;
-  if (target.classList.contains("tab-button")){
-    const signIn = document.getElementById("loginSignIn");
-    const register = document.getElementById("loginRegister");
-
-    if(target === signIn && !signIn.classList.contains("active")){
-      toggleTabs(signIn, register);
-      return;
-    };
-
-    if(target === register && !register.classList.contains("active")){
-      toggleTabs(register, signIn);
-      return;
-    }
-  }
-});
 
 
 async function register(newUser) {
@@ -76,7 +41,7 @@ registerButton.addEventListener('click', (event) => {
 });
 
 
-const loginForm = document.getElementById('loginForm');
+const loginForm = document.getElementById('theLoginForm');
 const loginButton = document.getElementById('loginBtn');
 
 loginButton.addEventListener('click', (event) => {
@@ -84,7 +49,6 @@ loginButton.addEventListener('click', (event) => {
   if (!loginForm.checkValidity()) {
     return loginForm.reportValidity();
   }
-
   const user = {
     email: loginForm.email.value,
     password: loginForm.password.value,

@@ -2,99 +2,63 @@
   font-family: Verdana, Geneva, sans-serif;	
 
 }
-#background-pic {
-  width: 100%;
-  height: auto;
-  opacity: 0.333;
-  z-index: 10;
-  margin: 0;
-  padding: 0; 
+#jumbotron{
+  background-image: url(/assets/images/misc/background.jpg);
+   opacity: 0.333;
+ 
 }
-#container-fluid {
-
-  z-index: 10000;
-  background-color: #4f95b3; 
-  height: 200px;
-
+#form1 {
+  background-color: #5f9ea0;
 } 
-
-#loginOrRegister {
-  max-width: 100%;
-  margin-top: 50px;
+#loginForm {
+  background-color:#5f9ea0;
+  padding:20px;
+  margin-top: 20px;
+  color: whitesmoke;
 }
-
-#loginOrRegister {
-  box-sizing: border-box;
-  z-index: 10000;
-  background-color:grey; 
-  height: 200px;
+#backgroundColor {
+  background-color: #5f9ea0;
+  margin: 20px;
 }
-
-#loginOrRegister .tab-container {
-  margin: auto;
-  min-width: 200px;
-  max-width: 600px;
-  background-color: grey;
-  padding: 0 10px 10px 10px;
-  border-radius: 5px;
-  min-height: 310px;
+#form2 {
+  background-color: whitesmoke;
 }
+#registerForm{
+  background-color: whitesmoke;
 
-#loginOrRegister .form-container {
-  margin-top: 15px;
+  padding: 20px;
 }
-
-#loginOrRegister form>div {
-  margin-top: 15px;
-}
-
-#loginOrRegister .col2 {
-  display: grid;
-  grid-template-columns: 50% 50%;
-}
-
-#loginOrRegister label {
-  margin-bottom: 0;
-}
-
-#loginOrRegister input {
-  width: 100%;
-  padding: 0 2px;
-  border-radius: 2.5px;
-  border-style: none;
-}
-
-#loginOrRegister input:focus {
-  outline-color: darkgrey;
-}
-
-#loginOrRegister .left {
-  padding-right: 7.5px;
-}
-
-#loginOrRegister .right {
-  padding-left: 7.5px;
-}
-
-#loginOrRegister .hidden {
-  display: none;
-}
-
-#loginOrRegister .active {
-  background-color: gray;
-  color: black;
-}
-
 .btn {
   background-color :#b43104;
   color: lightgray;
-  width: 150px;
-  height: 100px;
-  margin-top: 30%;
-  white-space: normal;
-     
+ }
+#text_over_image {
+  font-family: Impact, 'Arial Narrow Bold', Helvetica, Verdana, Geneva, sans-serif;
+  font-weight: 900;
+  font-size: 5em;
+  letter-spacing: .1em;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: black;
+  height: 8em;
 }
 
-#loginOrRegister .col1 {
-  text-align: right;
+/* ****************RESPONSIVE STYLING****************** */
+
+@media all and (orientation:portrait) {}
+
+@media all and (orientation:landscape) {}
+
+@media (max-width: 992px) {
+    #navbarNav {
+        background-color: cadetblue;
+        padding-left: 5px;
+    }
+    #currentUser {
+        display: none;
+    }
 }

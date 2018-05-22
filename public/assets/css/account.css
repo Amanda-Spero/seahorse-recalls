@@ -1,0 +1,117 @@
+/*
+  it is important that this only loado on the account page
+*/
+
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+  margin-bottom: 55px;
+}
+
+.footer {
+  position: absolute;
+  /* width: 100%; */
+}
+
+#accountInfo {
+  margin-top: 5em;
+}
+
+#searches,
+#savedSearches {
+  margin-top: 2em;
+}
+
+#accountInfoBody h1 {
+  color: white;
+  font-size: 1.5em;
+  background-color: cadetblue;
+}
+
+#accountInfoBody>div {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50em;
+  background-color: lightgray;
+  box-sizing: border-box;
+}
+
+#accountInfoBody .account-grid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  text-align: left;
+  padding: 0 20px 25px 20px;
+}
+
+#accountInfoBody .left {
+  padding-right: 25px;
+  padding-left: 25px;
+}
+
+#accountInfoBody>#accountInfo input {
+  width: 100%;
+  padding: 2px;
+  border-style: none;
+}
+
+#accountInfoBody>#accountInfo .head {
+  margin-top: 10px;
+}
+
+#accountInfoBody>#searches .saved-search {
+  display: grid;
+  grid-template-columns: 90% 10%;
+  padding-bottom: 10px;
+  text-align: left;
+  margin-left: 45px;
+}
+
+#accountInfoBody>#savedSearches .saved-search {
+  display: grid;
+  grid-template-columns: 90% 10%;
+  padding-bottom: 10px;
+  text-align: left;
+  margin-left: 45px;
+}
+
+#accountInfoBody>#searches input {
+  width: 30%;
+  padding-left: 5px;
+}
+
+#accountInfoBody>#savedSearches input {
+  width: 30%;
+  padding-left: 5px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#accountInfoBody .buttons {
+  text-align: right;
+  padding-right: 20px;
+}
+
+#accountInfoBody button {
+  background-color: cadetblue;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 12px;
+  width: 54.68px;
+}
+
+#accountInfoBody>#searches p {
+  width: 100%;
+  padding: 0 25px 0 25px;
+}

@@ -1,1 +1,81 @@
-<h1>Account Page</h1>
+<div id="accountInfoBody">
+
+
+  <div id="accountInfo">
+    <h1>Account Information</h1>
+    <div class="account-grid">
+      <div class="left head">First Name</div>
+      <div class="right head">Last Name</div>
+      <div class="left">
+        <input type="text" disabled value="{{renderArgs.firstName}}">
+      </div>
+      <div class="right">
+        <input type="text" disabled value="{{renderArgs.lastName}}">
+      </div>
+      <div class="left head">
+        Email
+      </div>
+      <div class="right head"></div>
+      <div class="left">
+        <input type="text" disabled value="{{renderArgs.email}}">
+      </div>
+      <div class="right"></div>
+    </div>
+  </div>
+
+  <div id="searches">
+    <h1>Add Search</h1>
+    <p>Saved Searches can be used to notify you when new recall information appears. Just enter the make, model and year of
+      the vehicle and when that item returns a new hit we will send you a notification.</p>
+    <form id="addSavedSearch">
+      <div class="saved-search">
+        <div class="inputs">
+          <input type="text" name="make" placeholder="make" required>
+          <input type="text" name="model" placeholder="model" required>
+          <input type="number" name="year" placeholder="year" required>
+        </div>
+        <div class="buttons">
+          <button>Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div id="savedSearches">
+    <h1>Saved Searches</h1>
+    {{!-- All Saved Searches Here --}}
+    <div class="saved-search" data-id="1">
+      <div class="inputs">
+        <input type="text" name="make" placeholder="make" disabled>
+        <input type="text" name="model" placeholder="model" disabled>
+        <input type="number" name="year" placeholder="year" disabled>
+      </div>
+      <div class="buttons">
+        <button>Delete</button>
+      </div>
+    </div>
+
+    <div class="saved-search" data-id="1">
+      <div class="inputs">
+        <input type="text" name="make" placeholder="make" disabled>
+        <input type="text" name="model" placeholder="model" disabled>
+        <input type="number" name="year" placeholder="year" disabled>
+      </div>
+      <div class="buttons">
+        <button>Delete</button>
+      </div>
+    </div>
+
+    <div class="saved-search" data-id="1">
+      <div class="inputs">
+        <input type="text" name="make" placeholder="make" disabled>
+        <input type="text" name="model" placeholder="model" disabled>
+        <input type="number" name="year" placeholder="year" disabled>
+      </div>
+      <div class="buttons">
+        <button>Delete</button>
+      </div>
+    </div>
+
+  </div>
+</div>
