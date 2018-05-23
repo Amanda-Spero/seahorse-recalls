@@ -46,6 +46,12 @@
   color: black;
   height: 8em;
 }
+#errorMsg {
+  visibility: hidden;
+}
+#errorPswd {
+  visibility: hidden;
+}
 
 /* ****************RESPONSIVE STYLING****************** */
 
