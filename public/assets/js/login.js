@@ -45,6 +45,7 @@ const loginForm = document.getElementById('theLoginForm');
 const loginButton = document.getElementById('loginBtn');
 
 loginButton.addEventListener('click', (event) => {
+  debugger;
   event.preventDefault();
   if (!loginForm.checkValidity()) {
     return loginForm.reportValidity();
