@@ -28,7 +28,7 @@ const search = (req, res, next) => {
     })
 }
 
-searchController.get('/year/:year/make/:make/model/:model', search);
+searchController.get('/search/year/:year/make/:make/model/:model', search);
 
 module.exports = {
   searchController,
