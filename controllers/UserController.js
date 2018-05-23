@@ -9,6 +9,9 @@ const {
 const db = require('../models');
 const { sendWelcome } = require('./NotificationController');
 
+
+
+
 const userController = express.Router();
 
 function userFieldsValid(body) {
