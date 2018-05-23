@@ -27,7 +27,7 @@ const {
   renderSearchPage,
   renderAccountPage,
 } = require('./controllers/HtmlController');
-
+const { searchController } = require('./controllers/SearchController');
 
 /*  **************** HTML ROUTES **********************
       - Add new routes here.
@@ -39,6 +39,7 @@ app.use('/login', renderLoginPage);
 app.use('/search', renderSearchPage);
 app.use('/account', requireAuth, renderAccountPage);
 app.use('/api/auth', userController);
+app.use('/api', searchController);
 app.use('/', renderLandingPage);
 
 
@@ -48,6 +49,7 @@ const { erorNotFound, logErrors, errorHandler } = require('./controllers/ErrorCo
 app.use(logErrors);
 app.use(errorHandler);
 app.use(erorNotFound);
+
 
 const db = require('./models');
 
