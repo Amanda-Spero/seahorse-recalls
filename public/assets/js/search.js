@@ -1,31 +1,3 @@
-// import { ADDRCONFIG } from "dns";
-
-// //from login.js//
-
-// const user = {
-//     email: loginForm.email.value,
-//     password: loginForm.password.value,
-//   };
-// /////////
-
-
-// ////from config/config.js////
-
-// const sql = {
-//     database: process.env.database || 'project2db',
-//     host: process.env.host || 'localhost',
-//     username: process.env.username || 'root',
-//     password: process.env.password || process.env.MYSQL_PWD,
-//   };
-
-
-
-///////////////*************START************************ */
-///need to access keys.js and .env to get api key///
-
-
-
-  // queryURL is the url we'll use to query the API
 
   //may need to take out all $(this).attr and .val().trim()
   var makeInput = $(this).attr("make-input").val().trim();
