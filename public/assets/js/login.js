@@ -19,7 +19,7 @@ registerButton.addEventListener('click', (event) => {
     password: registerForm.password.value,
   };
 
-  if (registerForm.password.value !== registerForm.verifyPassword.value) {
+  if (registerForm.password.value !== registerForm.password_confirmation.value) {
     return writeRegisterError('Confirmed password does not match.');
   }
 
