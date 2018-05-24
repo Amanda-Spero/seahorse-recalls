@@ -21,14 +21,10 @@ const User = db.user;
 return res.end();
 }
 
-accountController.get('/', function(req,res){
-  searches.all(function(searches_data){
-    console.log(searches_data);
-    res.render('index');
-  })
-})
+//post route for saving a new post
 
 accountController.post("/saveSearch", function(req, res) {
+  const User = db.user; 
   User.findOne({
     where: { globalUserId: req.userInfo.id },
    
@@ -36,7 +32,7 @@ accountController.post("/saveSearch", function(req, res) {
        console.log(account);
        const userId = account.id
        console.log(req.body);
-       db.SavedSearch.create({
+       db.savedSearch.create({
        userId: userId,
        make: req.body.make,
        model: req.body.model,
@@ -46,21 +42,39 @@ accountController.post("/saveSearch", function(req, res) {
          res.json(dbPost);
        });// projects will be an array of Project instances with the specified name
        })
+       .catch(err => {
+         console.log (err);
+
+       })
 });
 
+ // PUT route for updating posts
+ accountController.put("/api/accounts", function(req, res, next) {
+  db.Post.update(req.body,userId,
+    {
+      where: {
+        id: req.body.userId
+      }
+    })
+    .then(function(dbPost) {
+      res.json(dbPost);
+    });
+});
 
 // post route -> back to index
-accountController.post("/", function(req, res) {
-  searches.create(req.body.id, function(result) {
+accountController.post("/models", function(req, res, next) {
+  searches.create(req.body.userId, function(result) {
     // render back to index with handle
     console.log(result);
     res.redirect("/");
+    
   });
 });
 
 // put route -> back to index
-accountController.put("/models/:id", function(req, res) {
-  accounts.update(req.params.id, function(result) {
+accountController.put("/models/:userId", function(req, res, next) {
+  accounts.update(req.body.userId, function(result) {
+    
     // wrapper for orm.js that using MySQL update callback will return a log to console,
     // render back to index with handle
     console.log(result);
@@ -68,6 +82,25 @@ accountController.put("/models/:id", function(req, res) {
     res.sendStatus(200);
   });
 });
+
+// DELETE route for deleting posts
+accountController.delete("/savedAccounts", function(req, res, next) {
+      db.savedSearch.destroy({
+        where: {
+         // id: req.params.id
+         userId: userId,
+         make: req.body.make,
+         model: req.body.model,
+         year: req.body.year,
+        }
+      })
+        .then(function(dbPost) {
+          res.json(dbPost);
+        });
+    });
+
+  
+  
 
 
 module.exports = {

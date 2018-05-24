@@ -28,7 +28,7 @@ const {
   renderAccountPage,
 } = require('./controllers/HtmlController');
 const { searchController } = require('./controllers/SearchController');
-
+const { accountController } = require('./controllers/AccountController');
 /*  **************** HTML ROUTES **********************
       - Add new routes here.
       - Add 'requireAuth' to a route if it should be 'secure'
@@ -39,6 +39,7 @@ app.use('/login', renderLoginPage);
 app.use('/search', renderSearchPage);
 app.use('/account', requireAuth, renderAccountPage);
 app.use('/api/auth', userController);
+app.use('/api/account', accountController);
 app.use('/api', searchController);
 app.use('/', renderLandingPage);
 
