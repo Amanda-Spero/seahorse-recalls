@@ -39,7 +39,7 @@ app.use('/login', renderLoginPage);
 app.use('/search', renderSearchPage);
 app.use('/account', requireAuth, renderAccountPage);
 app.use('/api/auth', userController);
-app.use('/api/account', accountController);
+app.use('/api/account', requireAuth, accountController);
 app.use('/api', searchController);
 app.use('/', renderLandingPage);
 
