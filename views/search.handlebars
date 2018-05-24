@@ -2,79 +2,68 @@
   <div>
     <img src="/assets/images/misc/background.jpg" id="background-pic" width="1920" height="1080">
 
-<!--SEARCH BOX-->
+    <!--SEARCH BOX-->
 
-<div id="search-box" class=" d-flex flex-column row-hl">
-  <div class="p-4 item-hl" id="search-header">Choose Vehicle Make, Model, and Year to Search for Recalls</div>
-  <div class="d-flex flex-column align-items-center row-hl" id="search-options">
-    <form>
-      <div class="form-group form-group-inline" id="search-Make">
-        <input type="text" class="form control" id="make-input" placeholder="Make">
+    <div id="search-box" class=" d-flex flex-column row-hl">
+      <div class="p-4 item-hl" id="search-header">Choose Vehicle Make, Model, and Year to Search for Recalls</div>
+      <div class="d-flex flex-column align-items-center row-hl" id="search-options">
+        <form>
+          <div class="form-group form-group-inline" id="search-Make">
+            <input type="text" class="form control" id="make-input" placeholder="Make">
+          </div>
+          <div class="form-group form-group-inline" id="search-Model">
+            <input type="text" class="form control" id="model-input" placeholder="Model">
+          </div>
+          <div class="form-group form-group-inline" id="search-Year">
+            <input type="number" class="form control" id="year-input" placeholder="Year (YYYY)">
+          </div>
+        </form>
       </div>
-      <div class="form-group form-group-inline" id="search-Model">
-        <input type="text" class="form control" id="model-input" placeholder="Model">
+      <input class="btn" id="search-button" type="submit" value="Search">
+    </div>
+
+
+
+
+    <!--RESULTS TABLE-->
+
+
+    <div class="table-responsive" id="recalls-box">
+      <button class="accordion" id="recall-component"></button>
+      <div class="panel">
+        <p id="recall-summary"></p>
+        <p id="recall-conequence"></p>
+        <p id="recall-remedy"></p>
       </div>
-      <div class="form-group form-group-inline" id="search-Year">
-        <input type="number" class="form control" id="year-input" placeholder="Year (YYYY)">
+
+      <button class="accordion" id="recall-component2"></button>
+      <div class="panel">
+        <p id="recall-summary2"></p>
+        <p id="recall-conequence2"></p>
+        <p id="recall-remedy2"></p>
       </div>
-    </form>
-  </div>
-  <input class="btn" id="search-button" type="submit" value="Search">
-</div>
 
+      <button class="accordion" id="recall-component3"></button>
+      <div class="panel">
+        <p id="recall-summary3"></p>
+        <p id="recall-conequence3"></p>
+        <p id="recall-remedy3"></p>
+      </div>
 
+      <button class="accordion" id="recall-component4"></button>
+      <div class="panel">
+        <p id="recall-summary4"></p>
+        <p id="recall-conequence4"></p>
+        <p id="recall-remedy4"></p>
+      </div>
 
-
-<!--RESULTS TABLE-->
-
-<<<<<<< HEAD
-        <div class="table-responsive" id="recalls-box">
-            <button class="accordion" id="recall-component"></button> <!--RECALL COMPONENT NAME WILL GO HERE-->
-                <div class="panel">
-                <p id="recall-summary"></p>
-                <p id="recall-conequence"></p>
-                <p id="recall-remedy"></p>
-              </div>
-        </div>
-=======
->>>>>>> master
-
-        <div class="table-responsive" id="recalls-box">
-            <button class="accordion" id="recall-component"></button> 
-                <div class="panel">
-                <p id="recall-summary"></p>
-                <p id="recall-conequence"></p>
-                <p id="recall-remedy"></p>
-              </div>
-
-                <button class="accordion" id="recall-component2"></button> 
-                <div class="panel">
-                <p id="recall-summary2"></p>
-                <p id="recall-conequence2"></p>
-                <p id="recall-remedy2"></p>
-              </div>
-
-                 <button class="accordion" id="recall-component3"></button>
-                <div class="panel">
-                <p id="recall-summary3"></p>
-                <p id="recall-conequence3"></p>
-                <p id="recall-remedy3"></p>
-              </div>
-
-                <button class="accordion" id="recall-component4"></button>
-                <div class="panel">
-                <p id="recall-summary4"></p>
-                <p id="recall-conequence4"></p>
-                <p id="recall-remedy4"></p>
-              </div>
-
-                <button class="accordion" id="recall-component5"></button> 
-                <div class="panel">
-                <p id="recall-summary5"></p>
-                <p id="recall-conequence5"></p>
-                <p id="recall-remedy5"></p>                
-              </div>
-        </div>
+      <button class="accordion" id="recall-component5"></button>
+      <div class="panel">
+        <p id="recall-summary5"></p>
+        <p id="recall-conequence5"></p>
+        <p id="recall-remedy5"></p>
+      </div>
+    </div>
 
   </div>
 </div>
@@ -84,9 +73,3 @@
   crossorigin="anonymous"></script>
 
 <script src="/assets/js/search.js"></script>
-
-
-
-
-
-
