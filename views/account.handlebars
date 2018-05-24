@@ -44,39 +44,18 @@
   <div id="savedSearches">
     <h1>Saved Searches</h1>
     {{!-- All Saved Searches Here --}}
-    <div class="saved-search" data-id="1">
-      <div class="inputs">
-        <input type="text" name="make" placeholder="make" disabled>
-        <input type="text" name="model" placeholder="model" disabled>
-        <input type="number" name="year" placeholder="year" disabled>
+    {{#each renderArgs.searches}}
+      <div class="saved-search" data-id="1">
+        <div class="inputs">
+          <input type="text" name="make" value= {{make}} disabled>
+          <input type="text" name="model" value= {{model}} disabled>
+          <input type="number" name="year" value= {{year}} disabled>
+        </div>
+        <div class="buttons">
+          <button>Delete</button>
+        </div>
       </div>
-      <div class="buttons">
-        <button>Delete</button>
-      </div>
-    </div>
-
-    <div class="saved-search" data-id="1">
-      <div class="inputs">
-        <input type="text" name="make" placeholder="make" disabled>
-        <input type="text" name="model" placeholder="model" disabled>
-        <input type="number" name="year" placeholder="year" disabled>
-      </div>
-      <div class="buttons">
-        <button>Delete</button>
-      </div>
-    </div>
-
-    <div class="saved-search" data-id="1">
-      <div class="inputs">
-        <input type="text" name="make" placeholder="make" disabled>
-        <input type="text" name="model" placeholder="model" disabled>
-        <input type="number" name="year" placeholder="year" disabled>
-      </div>
-      <div class="buttons">
-        <button>Delete</button>
-      </div>
-    </div>s
-
+    {{/each}}
   </div>
 </div>
 

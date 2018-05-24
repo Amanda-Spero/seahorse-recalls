@@ -16,7 +16,9 @@ exports.renderLandingPage = (req, res, next) => {
     styleHomeNav: 'active',
   };
 
-  return res.render('index', { renderArgs });
+  return res.render('index', {
+    renderArgs
+  });
 };
 
 
@@ -27,7 +29,9 @@ exports.renderLoginPage = (req, res, next) => {
     styleLoginNav: 'active',
     hideLogin: true,
   };
-  return res.render('login', { renderArgs });
+  return res.render('login', {
+    renderArgs
+  });
 };
 
 
@@ -36,31 +40,50 @@ exports.renderSearchPage = (req, res, next) => {
     username: username(req),
     styleSearchNav: 'active',
   };
-  return res.render('search', { renderArgs });
+  return res.render('search', {
+    renderArgs
+  });
 };
 
+const getAccountRenderArgs = async (globalUserId, username) => {
+  const user = await db.user.findOne({
+    where: {
+      globalUserId
+    },
+  }).then(user => user);
+
+  const searches = await db.savedSearch.findAll({
+    where: {
+      userId: user.id,
+    },
+  }).then(data => data);
+
+  const renderArgs = {
+    username,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    email: user.email,
+    styleAccountNav: 'active',
+    accountPage: true,
+    searches,
+  };
+
+  return renderArgs;
+};
 
 exports.renderAccountPage = (req, res, next) => {
-
-  db.user.findOne({
-    where: {
-      globalUserId: req.userInfo.id,
-    },
-  })
-  .then( user => {
-    const renderArgs = {
-      username: username(req),
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-      styleAccountNav: 'active',
-      accountPage: true,
-    };
-    return res.render('account', { renderArgs });
-  })
-  .catch( err => {
-    return next(createError(500, 'Internal Server Error', {original: err,}))
-  })
+  console.log("help");
+  getAccountRenderArgs(req.userInfo.id, username(req))
+    .then(renderArgs => {
+      return res.render('account', {
+        renderArgs
+      });
+    })
+    .catch(err => {
+      return next(createError(500, 'Internal Server Error', {
+        original: err,
+      }))
+    })
 };
 
 //////////////??ADD RENDER FOR RECALL PAGE??//////////////////////
