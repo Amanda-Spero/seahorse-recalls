@@ -20,84 +20,10 @@ for (i = 0; i < acc.length; i++) {
 $(document).ready(function () {
 
 
-
-  //may need to take out all $(this).attr and .val().trim()
-
-
-  // function test() {
-  //   console.log("test")
-  
-  //takes API data (JSON/object) and turns it into elements on the page
-   //@param {object} NHTSAData - object containing NYT API data
-   
-
-  // function updatePage(NHTSAData) {
-  //   console.log("called function");
-
-  //   console.log(NHTSAData);
-  //   console.log("------------------------------------");
-
-  //   for (var i = 0; i < numRecall; i++) {
-  //     // Get specific article info for current index
-  //     var recall = NHTSAData.res.[i]; //response.docs??  api shows "results"//
-  //     console.log(recall);
-
-  //     var recallCount = i + 1;
-
-  //     var $recallList = $("<ul>");
-  //     $recallList.addClass("list-group");
-
-  //     $("#table-row").append($recallList);
-
-  //     var resultYear = res.ModelYear;
-  //     console.log(resultYear);
-  //     var $recallListItem = $("<li class='list-group-item recallresultYear'>");
-
-
-  //     if (resultYear && resultYear.main) { ///???.MAIN????///////
-  //       console.log(resultYear.main);
-  //       $carListItem.append(
-  //         "<span class='label label-primary'>" +
-  //         carCount +
-  //         "</span>" +
-  //         "<strong> " +
-  //         resultYear.main +
-  //         "</strong>"
-  //       );
-  //     }
-
-
-  //     var resultMake = car.Make;
-
-  //     if (resultMake && resultMake.original) { ///????.original.?????/////
-  //       console.log(resultMake.original);
-  //       $carListItem.append("<h5>" + resultMake.original + "</h5>");
-  //     }
-
-
-  //     // Log Model, and append to document if exists
-  //     var resultModel = car.Model;
-  //     console.log(car.Model);
-  //     if (resultModel) {
-  //       $carListItem.append("<h5>Section: " + resultModel + "</h5>");
-  //     }
-  //   }
-  // }
-
-  // // Function to empty out the articles
-  // function clear() {
-  //   $("#table-row").empty();
-  // }
-
-
-
-
-
-
-
-
-
-
+  function clear() {
+    $("#component-name").empty();
+    $("#recall-panel").empty();
+  }
 
   $("#search-button").on("click", function (event) {
 
@@ -107,7 +33,6 @@ $(document).ready(function () {
     var modelInput = $("#model-input");
     var yearInput = $("#year-input");
 
-
     var queryURL = "/api/search/year/" + yearInput.val().trim() + "/make/" + makeInput.val().trim() + "/model/" + modelInput.val().trim();
 
     $.ajax({
@@ -115,51 +40,89 @@ $(document).ready(function () {
         method: "GET"
       })
       .then(resp => {
-        //console.log(resp);
 
-        var results = resp.Results;
-        // console.log(results);
-        // console.log(results[1].Component);
-        // console.log(results[1].Summary)
-        // console.log(results[1].Conequence);
-        // console.log(results[1].Remedy);
+       // if {}
+       var results = resp.Results;
 
-      // for (var i = 0; i < results.length; i++) {
-      // })
+        var recallComponent = (results[0].Component);
+        var recallSummary = (results[0].Summary);
+        var recallConequence = (results[0].Conequence);
+        var recallRemedy = (results[0].Remedy);
+        //var recallCount = j + 1;
+        //console.log(results.length);
+    
+        $("#recalls-box > #recall-component").append(recallComponent);
+        $("#recall-summary").append("SUMMARY:   " + recallSummary + "<hr><hr>");
+        $("#recall-conequence").append("CONSEQUENCE:   " + recallConequence + "<hr><hr>");
+        $("#recall-remedy").append("REMEDY:   " + recallRemedy);
 
-      var recallComponent = (results[1].Component);
-      var recallSummary = (results[1].Summary);
-      var recallConequence = (results[1].Conequence);
-      var recallRemedy = (results[1].Remedy);
+///
 
-      console.log(recallComponent);
-      console.log(recallSummary);
-      console.log(recallConequence);
-      console.log(recallRemedy);
+        var recallComponent2 = (results[1].Component);
+        var recallSummary2 = (results[1].Summary + "<hr>");
+        var recallConequence2 = (results[1].Conequence + "<hr>");
+        var recallRemedy2 = (results[1].Remedy);
+ 
+    
+        $("#recalls-box > #recall-component2").append(recallComponent2);
+        $("#recall-summary2").append("SUMMARY:   " + recallSummary2 + "<hr>");
+        $("#recall-conequence2").append("CONSEQUENCE:   " + recallConequence2 + "<hr>");
+        $("#recall-remedy2").append("REMEDY:   " + recallRemedy2);
+
+///
+
+        var recallComponent3 = (results[2].Component);
+        var recallSummary3 = (results[2].Summary + "<hr>");
+        var recallConequence3 = (results[2].Conequence + "<hr>");
+        var recallRemedy3 = (results[2].Remedy);
+        //var recallCount = j + 1;
+        //console.log(results.length);
+
+        $("#recalls-box > #recall-component3").append(recallComponent3);
+        $("#recall-summary3").append("SUMMARY:   " + recallSummary3 + "<hr>");
+        $("#recall-conequence3").append("CONSEQUENCE:   " + recallConequence3 + "<hr>");
+        $("#recall-remedy3").append("REMEDY:   " + recallRemedy3);
+
+///
+
+        var recallComponent4 = (results[3].Component);
+        var recallSummary4 = (results[3].Summary + "<hr>");
+        var recallConequence4 = (results[3].Conequence + "<hr>");
+        var recallRemedy4 = (results[3].Remedy);
+        //var recallCount = j + 1;
+        //console.log(results.length);
+
+        $("#recalls-box > #recall-component4").append(recallComponent4);
+        $("#recall-summary4").append("SUMMARY:   " + recallSummary4 + "<hr>");
+        $("#recall-conequence4").append("CONSEQUENCE:   " + recallConequence4 + "<hr>");
+        $("#recall-remedy4").append("REMEDY:   " + recallRemedy4);
+
+///
+
+        var recallComponent5 = (results[4].Component);
+        var recallSummary5 = (results[4].Summary);
+        var recallConequence5 = (results[4].Conequence);
+        var recallRemedy5 = (results[4].Remedy);
+        //var recallCount = j + 1;
+        //console.log(results.length);
+
+        $("#recalls-box > #recall-component5").append(recallComponent5);
+        $("#recall-summary5").append("SUMMARY:   " + recallSummary5 + "<hr>");
+        $("#recall-conequence5").append("CONSEQUENCE:   " + recallConequence5 + "<hr>");
+        $("#recall-remedy5").append("REMEDY:   " + recallRemedy5);
+
+
+  })
+})
+})
 
 
 
-      $("#recall-component").append("COMPONENT:   " + recallComponent);
-      $("#recall-summary").append("SUMMARY:   " + recallSummary);
-      $("#recall-conequence").append("CONSEQUENCE:   " + recallConequence);
-      $("#recall-remedy").append("REMEDY:   " + recallRemedy);
 
 
 
 
 
 
-      })
 
-
-
-
-      });
-
-   
-
-
-
-});
-
-
+  

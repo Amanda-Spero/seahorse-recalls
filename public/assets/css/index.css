@@ -120,7 +120,7 @@ header {
     background-color: cadetblue;
     height: 15em;
     width: 50em;
-    margin-top: 7.5em;
+    margin-top: 5.5em;
 }
 
 #results-box {
@@ -131,7 +131,7 @@ header {
     left: 0;
     right: 0;
     bottom: 0;
-    margin-top: 25em;
+    margin-top: 23em;
     height: 15em;
     width: 36em;
     color: white;
@@ -188,55 +188,6 @@ tr.clickableRow {
     display: block;
 }
 
-/****************** FOR RECALL.HANDLEBARS  *******************/
-
-/********* INFORMATION BOX FOR CAR AT THE TOP ***********/
-
-#car-row {
-    background: darkgray;
-    height: 13em;
-    width: 55em;
-    ;
-    top: 2em;
-    position: absolute;
-    margin-right: auto;
-    margin-bottom: auto;
-    margin-left: auto;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-
-.car-pic {
-    height: 13rem;
-    width: 20rem;
-    margin-left: 5rem;
-    margin-top: 0;
-    z-index: 20000;
-    background: blue;
-}
-
-.car-year {
-    height: 5rem;
-    width: 20rem;
-    margin-left: 25rem;
-    font-size: 2rem;
-    font-weight: bold;
-    padding-top: 4px;
-}
-
-.car-name {
-    height: 5rem;
-    width: 20rem;
-}
-
-.car-subname {
-    height: 5rem;
-    width: 20rem;
-    margin-left: -1.5rem;
-}
-
-/******** RECALL RESULTS DETAILS LIST **********/
 
 #recalls-box {
     width: 62em;
@@ -246,13 +197,17 @@ tr.clickableRow {
     left: 0;
     right: 0;
     bottom: 0;
-    margin-top: 20em;
-    height: 22em;
+    margin-top: 23em;
+    height: 20em;
     width: 60em;
     color: black;
-    background: cadetblue;
-    outline: 2px solid #808080;
     z-index: 10000;
+    background: cadetblue;
+    overflow: auto;
+}
+
+#recall-header{
+    background-color: cadetblue;
 }
 
 .accordion {
@@ -264,6 +219,7 @@ tr.clickableRow {
     text-align: left;
     border: none;
     transition: 0.4s;
+    overflow: auto;
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
