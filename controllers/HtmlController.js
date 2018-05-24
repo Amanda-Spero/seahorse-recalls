@@ -72,7 +72,6 @@ const getAccountRenderArgs = async (globalUserId, username) => {
 };
 
 exports.renderAccountPage = (req, res, next) => {
-  console.log("help");
   getAccountRenderArgs(req.userInfo.id, username(req))
     .then(renderArgs => {
       return res.render('account', {

@@ -78,3 +78,22 @@ const save = (event) => {
 };
 
 saveBtn.addEventListener('click', save);
+
+
+savedSearches.addEventListener('click', (event) => {
+  if(event.target.innerText === 'Delete'){
+    const item = event.target.parentElement.parentElement;
+    const savedSearchId = item.getAttribute('data-id');
+    console.log(savedSearchId);
+
+    fetch(`/api/account/savedSearch/${savedSearchId}`, {
+      credentials: 'include',
+      method: 'DELETE',
+    })
+    .then(result => {
+      if(result.status === 200){
+        item.remove();
+      }
+    })
+  }
+});
