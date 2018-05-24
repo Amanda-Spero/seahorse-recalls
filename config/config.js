@@ -9,8 +9,8 @@ function getPrivate() {
 }
 
 function getPublic() {
-  if (process.env.privateKey) {
-    return process.env.privateKey;
+  if (process.env.publicKey) {
+    return process.env.publicKey;
   }
 
   return fs.readFileSync('./config/devkey.pem').toString();
